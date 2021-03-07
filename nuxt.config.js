@@ -45,7 +45,7 @@ export default {
   ],
 
   server: {
-    port: 3000
+    port: 5000
   },
   endpoint:'http://localhost:8000',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
