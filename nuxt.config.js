@@ -52,7 +52,7 @@ export default {
   loading: '~/components/loading.vue',
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-
+    optionsPath: './vuetify.options.js',
     theme: {
       dark: false,
       themes: {
