@@ -1,0 +1,38 @@
+.fail {
+  background: repeating-linear-gradient(130deg,
+  #a73a38,
+  #a73a38 220px,
+  #ef5350 0,
+  #ef5350 750px);
+}
+
+.passed {
+  background: repeating-linear-gradient(
+    130deg,
+    #47834a,
+    #47834a 220px,
+    #66bb6a 0,
+    #66bb6a 750px
+  )
+}
+
+.passed-question {
+  background: linear-gradient(310deg, #fff0 95%, #94cf97 0)
+}
+
+.fail-question {
+  background: linear-gradient(310deg, #fff0 95%, #f48785 0)
+}
+
+.correct {
+  background-color: #94cf97;
+}
+
+.incorrect {
+  background-color: #f48785;
+}
+
+
+.bgwhite{
+  background:white;
+}

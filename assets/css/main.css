@@ -1,0 +1,14 @@
+.primary {
+  color: #4d96e4;
+}
+.badge-category{
+  background: linear-gradient(90deg, #3a6186, #89253e)
+}
+
+.code-background{
+  background-color:#212529
+}
+
+.remove-link-style{
+  text-decoration: none;
+}

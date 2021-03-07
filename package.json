@@ -1,0 +1,26 @@
+{
+  "name": "quizzhunter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "heroku-postbuild": "ng build --prod"
+  },
+  "engines": {
+    "npm": "6.x",
+    "node": "14.x"
+  },
+  "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1613647907.37b1156",
+    "axios": "^0.21.1",
+    "core-js": "^3.8.3",
+    "nuxt": "^2.14.12",
+    "nuxt-highlightjs": "^1.0.1",
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.3"
+  }
+}
