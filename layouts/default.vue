@@ -99,12 +99,12 @@
 
           <v-col>
             <v-toolbar-title>QH
-              <v-chip
-                color="red"
-                text-color="white"
-                small
-              >Beta
-              </v-chip>
+<!--              <v-chip-->
+<!--                color="red"-->
+<!--                text-color="white"-->
+<!--                small-->
+<!--              >Beta-->
+<!--              </v-chip>-->
             </v-toolbar-title>
           </v-col>
         </NuxtLink>
@@ -148,17 +148,27 @@
           >
             <v-list-item v-if="!notifications.length">
 
-              <v-list-item-title>
+              <v-list-item-title v-if="notificationsLoading">
                 <v-list-item-icon>
                   <v-icon>mdi-bell</v-icon>
                 </v-list-item-icon>
                 loading...
               </v-list-item-title>
+
+              <v-list-item-title v-if="!notificationsLoading && !notifications.length">
+                <v-list-item-icon>
+                  <v-icon>mdi-bell</v-icon>
+                </v-list-item-icon>
+                No Results
+              </v-list-item-title>
+
             </v-list-item>
+
             <v-list-item
-              link
+
               v-for="(item, index) in notifications"
               :key="index"
+              :to="item.link || '#'"
             >
               <v-list-item-title>
                 <v-list-item-icon>
@@ -166,6 +176,7 @@
                 </v-list-item-icon>
                 {{ item.title }}
               </v-list-item-title>
+
             </v-list-item>
           </v-list>
         </v-menu>
@@ -182,9 +193,9 @@
                   prepend-icon="mdi-theme-light-dark"
         ></v-switch>
       </div>
-
-
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+
     </v-app-bar>
     <v-main>
       <nuxt></nuxt>
@@ -207,10 +218,13 @@ export default {
       });
     },
     getNotifications() {
+      this.notificationsLoading = true;
       this.$axios.get(`${process.env.baseUrl}/api/notifications`).then(res => {
         this.notifications = res.data.data.map(el => {
-          return {title: el.data.message, icon: 'mdi-account'}
-        })
+          return {title: el.data.message, icon: 'mdi-account', link: el.data.link}
+        });
+        this.notificationsLoading = false;
+
       })
     },
 
@@ -234,6 +248,7 @@ export default {
 
   },
   data: () => ({
+    notificationsLoading: false,
     drawer: false,
     selectedItem: null,
     notificationsCount: 0,

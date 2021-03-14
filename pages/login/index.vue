@@ -2,7 +2,7 @@
   <v-container>
     <v-main>
       <div align="center">
-        <div class="col-6">
+        <v-col cols="12" lg="6" xl="6">
           <v-card :loading="loading">
 
             <v-form v-model="valid">
@@ -41,7 +41,7 @@
             </v-form>
           </v-card>
 
-        </div>
+        </v-col>
 
       </div>
     </v-main>
@@ -59,7 +59,6 @@ export default {
     password: '',
     nameRules: [
       v => !!v || 'password is required',
-      v => v.length <= 10 || 'Name must be less than 10 characters',
     ],
     email: '',
     emailRules: [
@@ -82,7 +81,7 @@ export default {
           this.loading = false
           this.$router.push('/')
         }).catch(err => {
-        this.errors = err.response.data.errors;
+        this.errors = err.response.data.error || err.response.data.errors;
         this.loading = false;
 
       })

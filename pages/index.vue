@@ -27,7 +27,7 @@
       <v-container>
 
         <v-row>
-          <v-col cols="4">
+          <v-col lg="4" cols="12">
             <CodeField code="    class Employee {
           public fullname;
           public sallary;
@@ -38,16 +38,16 @@
         }    " language="php" color="white--text"></CodeField>
           </v-col>
 
-          <v-col cols="8" class="text-right white--text">
+          <v-col    lg="8" cols="12" class="text-right white--text">
             <div class="text-h4 ">
-              اختبر نفسك في مجال عملك
+              أختبر نفسك في وأبحث عن عمل
             </div>
             <div class="my-2">
               😁 افضل طريقة لتختبر نفسك في مجال عملك
             </div>
             <div class="my-5">
               <v-btn dark to="tests" class="greenbtn" min-width="200" min-height="50">الاختبارات</v-btn>
-              <v-btn class="red" min-width="100" min-height="50">HR</v-btn>
+<!--              <v-btn class="red" min-width="100" min-height="50">HR</v-btn>-->
             </div>
           </v-col>
 
@@ -66,13 +66,13 @@
 
         <v-row class="my-8">
 
-          <v-col align="center">
+          <v-col cols="12" lg="6" align="center">
             <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/1328/1328246.svg"></v-img>
             <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
               ومشاركتها مع متابعيك
             </div>
           </v-col>
-          <v-col align="center">
+          <v-col cols="12" lg="6" align="center">
             <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/3400/3400705.svg"></v-img>
             <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
               ومشاركتها مع متابعيك
@@ -86,13 +86,13 @@
 
         <v-row class="my-8">
 
-          <v-col align="center">
+          <v-col cols="12" lg="6" align="center">
             <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/2463/2463510.svg"></v-img>
             <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
               ومشاركتها مع متابعيك
             </div>
           </v-col>
-          <v-col align="center">
+          <v-col cols="12" lg="6" align="center">
             <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135682.svg"></v-img>
             <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
               ومشاركتها مع متابعيك
@@ -128,7 +128,7 @@
       >
         {{ 2020 }} - {{ new Date().getFullYear() }} — <strong>QuizzHunter</strong>
         <div>
-          <NuxtLink to="/contact-us">contact us</NuxtLink>
+          <NuxtLink to="/contact-us">اتصل بنا</NuxtLink>
         </div>
       </v-col>
     </v-footer>
@@ -148,6 +148,7 @@ export default {
   },
   data() {
     return {
+
       bestFive: [],
       icons: [
         'mdi-facebook',
@@ -159,7 +160,6 @@ export default {
   },
   methods: {
     getBestFive() {
-
       this.$axios.get(`${process.env.baseUrl}/api/tests/bestfive`).then(res => {
         this.bestFive = res.data
       })

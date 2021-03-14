@@ -17,7 +17,9 @@
       <div>
         <div class=" "
              v-text="'questions '+(questionsCount-questions.length+1 + this.questionIndex) + '/' + questionsCount "></div>
-        <div class="text-h5 text-right " :class="!this.isRtl(questions[this.questionIndex].question.question) ? 'rtl' : '' " v-text="questions[this.questionIndex].question.question"></div>
+        <div class="text-h5 text-right "
+             :class="!this.isRtl(questions[this.questionIndex].question.question) ? 'rtl' : '' "
+             v-text="questions[this.questionIndex].question.question"></div>
       </div>
 
       <v-spacer></v-spacer>
@@ -43,6 +45,7 @@
     </div>
 
   </v-container>
+
 </template>
 
 <script>
@@ -83,16 +86,12 @@ export default {
       }).then(res => {
         if (!this.questions[this.questionIndex + 1]) {
           this.endSession();
-        }else{
+        } else {
           this.questionIndex++;
           this.answers_ids = [];
 
         }
-
-
-      }).catch(err => {
-        alert('err')
-      });
+      })
     },
 
     setTimer() {
@@ -118,8 +117,7 @@ export default {
     },
 
 
-
-    isRtl(string){
+    isRtl(string) {
       let english = /^[A-Za-z0-9]*$/;
       return english.test(string);
     }

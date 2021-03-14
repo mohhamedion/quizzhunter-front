@@ -2,9 +2,9 @@
   <v-container>
     <v-main>
       <div align="center">
-        <div class="col-6">
+        <v-col cols="12" lg="6" xl="6">
           <RegisterForm :redirect="true"></RegisterForm>
-        </div>
+        </v-col>
       </div>
     </v-main>
   </v-container>
