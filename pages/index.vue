@@ -67,15 +67,15 @@
         <v-row class="my-8">
 
           <v-col cols="12" lg="6" align="center">
-            <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/1328/1328246.svg"></v-img>
-            <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
-              ومشاركتها مع متابعيك
+            <v-img width="150" :src="require(`~/assets/img/1328246.svg`)"></v-img>
+            <div class="mt-2 text-h6 rtl">
+              يتم وضع الاختبارات من قبل اشخاص ذو خبرة, والشركات الباحثة عن موظفين.
             </div>
           </v-col>
           <v-col cols="12" lg="6" align="center">
             <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/3400/3400705.svg"></v-img>
-            <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
-              ومشاركتها مع متابعيك
+            <div class="mt-2 text-h6 rtl">
+              هي منصة الكترونية تستطيع من خلالها اجتياز اختبارات في جميع لغات البرمجة.
             </div>
           </v-col>
 
@@ -87,17 +87,19 @@
         <v-row class="my-8">
 
           <v-col cols="12" lg="6" align="center">
-            <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/2463/2463510.svg"></v-img>
-            <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
-              ومشاركتها مع متابعيك
+            <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135682.svg"></v-img>
+            <div class="mt-2 text-h6 rtl">
+              موجه للشركات البرمجية الباحثة عن موظفين, يقدم QuizzHunter بيانات الاختبارات للشركات, لسهولة انتقاء الموظفين.
             </div>
           </v-col>
           <v-col cols="12" lg="6" align="center">
-            <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135682.svg"></v-img>
-            <div class="mt-2 text-h6">يعتمد quizzhunter على صانعي المحتوى, اي انك تستطيع انشاء اختبارات مدفوعة,
-              ومشاركتها مع متابعيك
+            <v-img width="150" src="https://www.flaticon.com/svg/static/icons/svg/2463/2463510.svg"></v-img>
+            <div class="mt-2 text-h6 rtl">
+              موجه للمستجدين الباحثين عن عمل, يساعدك QuizzHunter على الاستعداد لمقابلات العمل.
             </div>
           </v-col>
+
+
 
         </v-row>
 

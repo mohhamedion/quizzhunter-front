@@ -231,11 +231,8 @@ export default {
     logout() {
       this.$auth.logout('local')
     }
-
   },
-
   mounted() {
-
     const theme = localStorage.getItem("darkMode");
     if (theme) {
       if (theme == "true") {
@@ -245,7 +242,6 @@ export default {
     if (this.$auth.loggedIn) {
       this.unreadNotificationsCount();
     }
-
   },
   data: () => ({
     notificationsLoading: false,
