@@ -27,7 +27,7 @@ export default {
 
   methods: {
     getTests() {
-      this.$axios.get('http://localhost:8000/api/panel/' + 'sessions').then(res => {
+      this.$axios.get(`${process.env.baseUrl}/api/panel/` + 'sessions').then(res => {
         this.rows = res.data.data
         console.log(this.rows);
       })
