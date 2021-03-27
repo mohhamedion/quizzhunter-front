@@ -89,7 +89,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="update()">
+          <v-btn @click="update">
             Change
           </v-btn>
         </v-card-actions>
@@ -174,7 +174,7 @@ export default {
     },
 
     update(){
-      this.$axios.patch(`${process.env.baseUrl}/api/panel/` + 'categories/'+row.id,{
+      this.$axios.patch(`${process.env.baseUrl}/api/panel/` + 'categories/'+this.rowToEdit.id,{
         image:this.rowToEdit.image,
         category:this.rowToEdit.category
       }).then(res => {
