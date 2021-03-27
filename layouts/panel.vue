@@ -82,6 +82,19 @@
         </v-list-item>
 
 
+        <v-list-item
+          to="/panel/categories"
+
+        >
+          <v-list-item-content>
+            <v-list-item-title  >Categories</v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-icon>
+            <v-icon>mdi-account</v-icon>
+
+          </v-list-item-icon>
+        </v-list-item>
+
       </v-list-item-group>
     </v-navigation-drawer>
 
