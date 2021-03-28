@@ -109,13 +109,13 @@
           </v-col>
         </NuxtLink>
 
-        <v-tabs align-with-title color="white">
-          <v-tab to="/tests">الاختبارات</v-tab>
-        </v-tabs>
+<!--        <v-tabs align-with-title color="white">-->
+<!--          <v-tab to="/tests">الاختبارات</v-tab>-->
+<!--        </v-tabs>-->
 
       </template>
 
-      <v-spacer></v-spacer>
+<!--      <v-spacer></v-spacer>-->
 
       <div v-if="this.$auth.loggedIn">
         <v-menu offset-y left>

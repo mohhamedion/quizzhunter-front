@@ -174,7 +174,7 @@ export default {
     },
 
     update(){
-      this.$axios.patch(`${process.env.baseUrl}/api/panel/` + 'categories/'+this.rowToEdit.id,{
+      this.$axios.patch(`${process.env.baseUrl}/api/panel/` + 'categories/' + this.rowToEdit.id,{
         image:this.rowToEdit.image,
         category:this.rowToEdit.category
       }).then(res => {

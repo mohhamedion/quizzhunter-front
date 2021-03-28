@@ -5,7 +5,7 @@
 }
 
 #line {
-  background: #ff0000ad;
+  background: rgba(255, 0, 0, 0.68);
   padding-top: 0.75em;
 }
 
