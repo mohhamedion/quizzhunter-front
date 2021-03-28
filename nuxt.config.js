@@ -17,6 +17,13 @@ export default {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+    ],
+    script: [
+      {
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        'data-ad-client': 'ca-pub-2029123904217360',
+        async: true
+      }
     ]
   },
 
@@ -41,15 +48,12 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    '@nuxtjs/google-adsense',
     ['nuxt-highlightjs', {
       style: 'sunburst'
     }]
   ],
 
-  'google-adsense': {
-    id: 'ca-pub-2029123904217360'
-  },
+
   endpoint:'http://localhost:8000',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   loading: '~/components/loading.vue',
