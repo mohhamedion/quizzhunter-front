@@ -115,7 +115,7 @@
 
       </template>
 
-<!--      <v-spacer></v-spacer>-->
+      <v-spacer></v-spacer>
 
       <div v-if="this.$auth.loggedIn">
         <v-menu offset-y left>
