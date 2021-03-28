@@ -90,6 +90,20 @@
         </v-list-item-group>
       </div>
 
+      <div>
+        <v-list-item
+          to="/tests"
+        >
+          <v-list-item-content>
+            <v-list-item-title class="text-right">الاختبارات</v-list-item-title>
+          </v-list-item-content>
+          <v-list-item-icon>
+            <v-icon>mdi-test-tube</v-icon>
+
+          </v-list-item-icon>
+        </v-list-item>
+      </div>
+
     </v-navigation-drawer>
 
     <v-app-bar dark app>
