@@ -1,6 +1,6 @@
 <style>
 .mainbg {
-  background: url(https://quizzhunter.com/background/background.svg), #2b3137;
+  background:   #2b3137;
   background-size: cover;
 }
 
@@ -39,9 +39,9 @@
           </v-col>
 
           <v-col    lg="8" cols="12" class="text-right white--text">
-            <div class="text-h4 ">
-              أختبر نفسك في وأبحث عن عمل
-            </div>
+            <h1 class="text-h4 ">
+              أختبر نفسك في مجالك وأبحث عن عمل
+            </h1>
             <div class="my-2">
               😁 افضل طريقة لتختبر نفسك في مجال عملك
             </div>
@@ -171,6 +171,19 @@ export default {
   ,
   mounted() {
     this.getBestFive();
-  }
+  },
+  head(){
+    return{
+      title: `الصفحة الرئيسية`,
+      meta: [
+        {
+          hid: `موقع عربي للاختبارات البرمجية`,
+          name: `QuizzHunter`,
+          content: ` أول موقع عربي يحتوي على اختبارات في لغات البرمجة, يساعدك الموقع على تحسين ادائك في الغات البرمجية `
+        }
+      ]
+    }
+    }
+
 }
 </script>
