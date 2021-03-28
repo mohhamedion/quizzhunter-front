@@ -86,16 +86,16 @@ export default {
         },
 
         endpoints: {
-          login: {url: 'https://quizzhunter.com/api/login', method: 'post'},
-          logout: {url: 'https://quizzhunter.com/api/logout', method: 'post'},
-          user: {url: 'https://quizzhunter.com/api/user', method: 'get'}
+          login: {url: 'https://209.250.234.224/api/login', method: 'post'},
+          logout: {url: 'https://209.250.234.224/api/logout', method: 'post'},
+          user: {url: 'https://209.250.234.224/api/user', method: 'get'}
         }
       }
     }
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'https://quizzhunter.com'
+    baseUrl: process.env.BASE_URL || 'https://209.250.234.224'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}

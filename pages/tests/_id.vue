@@ -292,6 +292,7 @@ export default {
       sessionExist = (await $axios.get(`${process.env.baseUrl}/api/testSessions/current-session-exist`)).data;
     }
 
+    test.questions_per_session = test.questions_per_session || test.questions_count ;
 
     return {test, bestUsers, lastSessions, sessionExist, comments};
   },
