@@ -41,12 +41,15 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/google-adsense',
     ['nuxt-highlightjs', {
       style: 'sunburst'
     }]
   ],
 
-
+  'google-adsense': {
+    id: 'ca-pub-2029123904217360'
+  },
   endpoint:'http://localhost:8000',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   loading: '~/components/loading.vue',
