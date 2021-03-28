@@ -9,7 +9,7 @@
           size="128"
         >
           <img
-            src="https://cdn.vuetifyjs.com/images/john.jpg"
+            :src="require(`~/assets/img/quizzhunter.png`)"
             alt="John">
         </v-avatar>
         <v-spacer></v-spacer>
@@ -86,7 +86,7 @@
               و انهى الاختبار بنتيجة {{ session.totalPoints }}/{{ session.session_questions_count }}
               {{ session.test.category.category }} قد اختبر
               <div>
-                <NuxtLink :to="'/result/'+session.id"> تفاصيل الاختبار</NuxtLink>
+                <NuxtLink :to="'/results/'+session.id"> تفاصيل الاختبار</NuxtLink>
               </div>
             </div>
 

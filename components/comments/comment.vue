@@ -11,7 +11,7 @@
 
         <v-avatar>
           <img
-            src="https://cdn.vuetifyjs.com/images/john.jpg"
+            :src="require(`~/assets/img/quizzhunter.png`)"
             alt="John"
           >
         </v-avatar>
