@@ -7,7 +7,7 @@ export default {
     titleTemplate: '%s - quizzhunter',
     title: 'quizzhunter',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ar'
     },
     meta: [
       {charset: 'utf-8'},
