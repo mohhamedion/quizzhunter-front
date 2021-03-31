@@ -4,7 +4,7 @@
     type="info"
 
   >
-    <div class="text-right">
+    <div class="text-right rtl">
       {{ explanation }}
     </div>
   </v-alert>
