@@ -6,7 +6,7 @@
   >
     <!--    :icon="correct ? 'mdi-check correct' : 'mdi-alpha-x incorrect' "-->
 
-    <div class="text-h6  text-right ">
+    <div class="text-h6  text-right rtl">
       {{ question }}
     </div>
 
