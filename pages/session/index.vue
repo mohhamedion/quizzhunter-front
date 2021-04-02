@@ -80,6 +80,9 @@ export default {
 
     },
     answerQuestion() {
+      if(!this.answers_ids.length){
+         return;
+      }
       this.$axios.post(`${process.env.baseUrl}/api/testSessions/answerQuestion`, {
         answer_ids: this.answers_ids,
         session_question_id: this.questions[this.questionIndex].id

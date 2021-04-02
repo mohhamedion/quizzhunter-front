@@ -91,6 +91,13 @@
             </v-list-item>
           </v-list>
 
+          <!-- اعلانات صفحة الاختبارات -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-2029123904217360"
+               data-ad-slot="5856570912"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
 
           <v-card-actions>
 
@@ -242,6 +249,13 @@
 
 
 <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+</script>
+<script>
+
+
+
 import Comment from "../../components/comments/comment";
 import RegisterForm from '../../components/register-form/register-form';
 
@@ -274,7 +288,7 @@ export default {
         icon: 'mdi-email-open',
         text: 'Drafts',
       },
-    ],
+    ]
   }),
 
   async asyncData({$axios, $auth, params}) {
