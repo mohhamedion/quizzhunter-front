@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  serverMiddleware: ["redirect-ssl"],
+   // serverMiddleware: ["redirect-ssl"],
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - quizzhunter',
@@ -33,7 +33,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/TiptapVuetify'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -107,5 +107,7 @@ export default {
     baseUrl: process.env.BASE_URL || 'https://hi-buddy.club'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {
+    transpile: ['vuetify/lib', "tiptap-vuetify"]
+  }
 }

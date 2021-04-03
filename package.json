@@ -22,7 +22,9 @@
     "nuxt": "^2.14.12",
     "nuxt-highlightjs": "^1.0.1",
     "redirect-ssl": "^2.0.0",
-    "vue-toast-notification": "^0.6.1"
+    "tiptap-vuetify": "^2.24.0",
+    "vue-toast-notification": "^0.6.1",
+    "vue2-editor": "^2.10.2"
   },
   "devDependencies": {}
 }
