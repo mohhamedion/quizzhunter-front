@@ -54,7 +54,7 @@ export default {
   ],
 
 
-  endpoint:'http://localhost:8000',
+  endpoint:'http://localhost',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   loading: '~/components/loading.vue',
   vuetify: {
@@ -95,16 +95,16 @@ export default {
         },
 
         endpoints: {
-          login: {url: 'https://hi-buddy.club/api/login', method: 'post'},
-          logout: {url: 'https://hi-buddy.club/api/logout', method: 'post'},
-          user: {url: 'https://hi-buddy.club/api/user', method: 'get'}
+          login: {url: 'https://quizzhunter-api.tavakal.com/api/login', method: 'post'},
+          logout: {url: 'https://quizzhunter-api.tavakal.com/api/logout', method: 'post'},
+          user: {url: 'https://quizzhunter-api.tavakal.com/api/user', method: 'get'}
         }
       }
     }
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || 'https://hi-buddy.club'
+    baseUrl: process.env.BASE_URL || 'https://quizzhunter-api.tavakal.com'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
