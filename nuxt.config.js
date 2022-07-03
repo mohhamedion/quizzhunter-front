@@ -103,6 +103,7 @@ export default {
     }
   },
 
+
   env: {
     baseUrl: process.env.BASE_URL || 'https://quizzhunter-api.tavakal.com'
   },
