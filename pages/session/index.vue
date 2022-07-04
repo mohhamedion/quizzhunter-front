@@ -57,18 +57,24 @@ export default {
   components: {
     Answer, CodeField
   },
-  async asyncData({$axios}) {
-    const result = await $axios.get(`${process.env.baseUrl}/api/testSessions`);
-    let timeLeftString = result.data.timeString;
-    let timeInteger = result.data.timeInteger;
-    const session = result.data.session;
-    const test = session.test;
-    const questionsCount = session.session_questions.length;
-    const questions = session.session_questions.filter((el) => {
-      return !el.answered
-    });
+  async asyncData({$axios,redirect}) {
+    try{
+      const result = await $axios.get(`${process.env.baseUrl}/api/testSessions`);
 
-    return {session, test, questionsCount, questions, timeLeftString, timeInteger};
+      let timeLeftString = result.data.timeString;
+      let timeInteger = result.data.timeInteger;
+      const session = result.data.session;
+      const test = session.test;
+      const questionsCount = session.session_questions.length;
+      const questions = session.session_questions.filter((el) => {
+        return !el.answered
+      });
+
+      return {session, test, questionsCount, questions, timeLeftString, timeInteger};
+    }catch (ex){
+      redirect('/');
+    }
+
   },
   methods: {
     chooseAnswer(id) {
@@ -77,7 +83,6 @@ export default {
       } else {
         this.answers_ids.push(id);
       }
-
     },
     answerQuestion() {
       if(!this.answers_ids.length){
@@ -100,7 +105,6 @@ export default {
     setTimer() {
       clearInterval(this.interval);
       this.interval = setInterval(() => {
-        console.log('asd')
         this.timeInteger = this.timeInteger - 1;
         if (this.timeInteger <= 0) {
           clearInterval(this.interval)
@@ -114,7 +118,7 @@ export default {
 
     endSession() {
       clearInterval(this.interval);
-      if (this.$router.currentRoute.name == "session") {
+      if (this.$router.currentRoute.path == "/session") {
         this.$router.push({path: `/results/${this.session.id}`});
       }
     },
