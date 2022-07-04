@@ -43,7 +43,7 @@
 
             <div class="my-4 subtitle-1"></div>
 
-            <div class="text-right">
+            <div :class="textClass">
               {{ test.description }}
             </div>
           </v-card-text>
@@ -70,24 +70,31 @@
                 color="primary"
                 text-color="white"
                 small
-              >{{ test.questions_per_session }} اسألة
+              >{{ test.questions_per_session }} {{$t('test.questions')}}
               </v-chip>
 
               <v-chip
                 color="badge-category"
                 text-color="dark"
                 small
-              >{{ test.second_per_question * test.questions_per_session }} ثانية
+              >{{ test.second_per_question * test.questions_per_session }} {{$t('test.seconds')}}
               </v-chip>
 
             </v-chip-group>
           </v-card-text>
 
           <v-list>
-            <v-list-item>
+            <v-list-item v-if="isRtl">
               {{ test.user.firstname }} {{ test.user.lastname }}
               <v-spacer></v-spacer>
-              : الكاتب
+              : {{$t('test.author')}}
+            </v-list-item>
+
+            <v-list-item v-else>
+              {{$t('test.author')}}:
+              <v-spacer></v-spacer>
+              {{ test.user.firstname }} {{ test.user.lastname }}
+
             </v-list-item>
           </v-list>
 
@@ -106,7 +113,7 @@
               color="primary white--text"
               @click="reserve"
             >
-              <v-card-text>اختبر الان</v-card-text>
+              <v-card-text>{{$t('test.testNow')}}</v-card-text>
             </v-btn>
 
 
@@ -120,7 +127,7 @@
               v-if="sessionExist"
               to="/session"
             >
-              <v-card-text>اكمال الاختبار السابق</v-card-text>
+              <v-card-text>{{$t('test.ContinuePreviousTest')}}</v-card-text>
             </v-btn>
 
           </v-card-actions>
@@ -133,7 +140,7 @@
 
 
         <v-list v-if="bestUsers.length">
-          <h2 class="text-right">الافضل اخر 30 يوما</h2>
+          <h2 :class="textClass">{{$t('test.bestForMonth')}}</h2>
 
           <v-list-item-group
           >
@@ -172,7 +179,7 @@
         </v-list>
 
         <v-list v-if="lastSessions.length">
-          <h2 class="text-right">اخر المختبرين</h2>
+          <h2 :class="textClass">  {{$t('test.lastTesters')}}</h2>
 
           <v-list-item-group
           >
@@ -207,22 +214,22 @@
           </v-list-item-group>
         </v-list>
         <div>
-          <h2 class="text-right">التعليقات</h2>
+          <h2 :class="textClass">{{$t('test.comments')}}</h2>
           <v-textarea
             v-model="inputComment"
             name="input-7-1"
             filled
-            class="text-right"
-            label="علق"
+            :class="textClass"
+            :label="$t('test.comment')"
           ></v-textarea>
 
-          <div class="text-right">
+          <div :class="textClass">
             <v-btn
               class="dark--text"
               @click="createComment"
               depressed
             >
-              علق
+              {{ $t('test.comment') }}
             </v-btn>
           </div>
           <div class="my-5">
@@ -292,6 +299,7 @@ export default {
   }),
 
   async asyncData({$axios, $auth, params}) {
+
     let lastSessions = await fetch(`${process.env.baseUrl}/api/testSessions/get-users-result/${params.id}`).then(res =>
       res.json()
     );
@@ -367,6 +375,14 @@ export default {
     }
   },
 
+  computed:{
+    isRtl(){
+      return this.$i18n.locale === 'ar';
+    },
+    textClass(){
+      return this.$i18n.locale === 'ar' ? 'text-right' : 'text-left'
+    }
+  },
 
   head() {
 

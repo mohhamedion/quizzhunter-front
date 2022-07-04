@@ -33,7 +33,7 @@
                   </div>
 
                   <div>
-                    <v-btn @click="login">تسجيل دخول</v-btn>
+                    <v-btn @click="login">{{ $t("auth.login") }}</v-btn>
                   </div>
                 </div>
 

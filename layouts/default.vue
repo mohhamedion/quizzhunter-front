@@ -52,7 +52,7 @@
           @click="logout"
         >
           <v-list-item-content>
-            <v-list-item-title class="text-right">تسجيل خروج</v-list-item-title>
+            <v-list-item-title class="text-right">{{$t('auth.logout')}}</v-list-item-title>
           </v-list-item-content>
           <v-list-item-icon>
             <v-icon>mdi-door</v-icon>
@@ -69,7 +69,7 @@
             to="/login"
           >
             <v-list-item-content>
-              <v-list-item-title class="text-right">تسجيل الدخول</v-list-item-title>
+              <v-list-item-title class="text-right"> {{$t('auth.login')}}</v-list-item-title>
             </v-list-item-content>
             <v-list-item-icon>
               <v-icon>mdi-lock</v-icon>
@@ -80,7 +80,7 @@
             to="/register"
           >
             <v-list-item-content>
-              <v-list-item-title class="text-right">سجل حساب</v-list-item-title>
+              <v-list-item-title class="text-right">{{$t('auth.register')}}</v-list-item-title>
             </v-list-item-content>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
@@ -95,7 +95,7 @@
           to="/tests"
         >
           <v-list-item-content>
-            <v-list-item-title class="text-right">الاختبارات</v-list-item-title>
+            <v-list-item-title class="text-right">{{$t('tests')}}</v-list-item-title>
           </v-list-item-content>
           <v-list-item-icon>
             <v-icon>mdi-test-tube</v-icon>
@@ -113,12 +113,12 @@
 
           <v-col>
             <v-toolbar-title>QH
-<!--              <v-chip-->
-<!--                color="red"-->
-<!--                text-color="white"-->
-<!--                small-->
-<!--              >Beta-->
-<!--              </v-chip>-->
+              <v-chip
+                color="red"
+                text-color="white"
+                small
+              >Beta
+              </v-chip>
             </v-toolbar-title>
           </v-col>
         </NuxtLink>
@@ -211,7 +211,7 @@
 
 
     </v-app-bar>
-    <v-main>
+    <v-main dir="ltr">
       <nuxt></nuxt>
     </v-main>
   </v-app>

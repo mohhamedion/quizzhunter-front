@@ -13,8 +13,8 @@
             item-text="level"
             v-model="search.level"
             :menu-props="{ maxHeight: '400' }"
-            label="Level"
-            hint="اختر درحة الصعوبة"
+            :label="$t('testsPage.level.text')"
+            :hint="$t('testsPage.level.choose')"
             persistent-hint
             v-on:change="filter"
           ></v-select>
@@ -25,21 +25,22 @@
             item-text="category"
             v-model="search.category"
             :menu-props="{ maxHeight: '400' }"
-            label="Category"
-            hint="اختر المجال"
+            :label="$t('testsPage.category.text')"
+            :hint="$t('testsPage.category.choose')"
             persistent-hint
             v-on:change="filter"
           ></v-select>
 
           <v-btn v-if="this.search.level||this.search.category" class="col-12" @click="clearFilter">
-            نتظيف الفلتر
+
+            {{$t('testsPage.clearFilter')}}
           </v-btn>
         </div>
       </v-col>
 
       <v-col lg="9" cols="12">
         <div v-if="notFound">
-          <div class="text-h5 text-center">لا يوجد نتائج</div>
+          <div class="text-h5 text-center">{{$t('testsPage.notFound')}}</div>
         </div>
         <v-row align="center">
           <v-col xl="3" lg="4" cols="12" class="my-6" v-if="!tests.length && !notFound">

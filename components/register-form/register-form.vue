@@ -63,10 +63,10 @@
               :messages="this.errors.c_password"
             ></v-text-field>
           </div>
-          <div class="my-1">عند تسجيلك الحساب, فأنك توافق على <NuxtLink to="/policy">شروط الاستخدام</NuxtLink> و  <NuxtLink to="privacy">الخصوصية</NuxtLink></div>
+          <div class="my-1">{{$t('auth.youAgreeWithTerms')}} <NuxtLink to="/policy">{{$t('auth.terms')}}</NuxtLink> {{$t('auth.and')}}  <NuxtLink to="privacy">{{$t('auth.privacy')}}</NuxtLink></div>
 
           <div>
-            <v-btn @click="register">تسجيل حساب جديد</v-btn>
+            <v-btn @click="register"> {{$t('auth.createNewAccount')}}</v-btn>
           </div>
         </div>
 
