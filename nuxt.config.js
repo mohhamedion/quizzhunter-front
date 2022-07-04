@@ -33,7 +33,10 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/TiptapVuetify'],
+  plugins: [
+    '~/plugins/TiptapVuetify',
+    '~/plugins/LanguageHelper.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -71,15 +74,20 @@ export default {
       fallbackLocale: 'en',
       messages: {
         en: {
-          profile:{
-            profile:'Profile'
+
+          comment: {
+            leaveComment: 'Leave comment',
+            replay: 'replay'
           },
-          session:{
-              theAnswer:'The answer'
+          profile: {
+            profile: 'Profile'
+          },
+          session: {
+            theAnswer: 'The answer'
           },
           test: {
             author: 'Author',
-            comment:'Comment',
+            comment: 'Comment',
             questions: 'Questions',
             seconds: 'Seconds',
             testNow: 'Test Now',
@@ -112,7 +120,7 @@ export default {
           start_from_where: 'Start from here',
           call_us: 'Call us',
           testsPage: {
-            notFound:'Not found',
+            notFound: 'Not found',
 
             clearFilter: 'Clear filter',
 
@@ -127,12 +135,17 @@ export default {
           }
         },
         ar: {
-          profile:{
-            profile:'الملف الشخصي'
+          comment: {
+            leaveComment: 'اترك تعليقا',
+            replay: 'رد'
+          },
+
+          profile: {
+            profile: 'الملف الشخصي'
           },
           test: {
             author: 'الكاتب',
-            comment:'علق',
+            comment: 'علق',
             questions: 'أسالة',
             seconds: 'ثوامي',
             testNow: 'أختبر الان',
@@ -166,7 +179,7 @@ export default {
           start_from_where: 'ابدأ من هنا.\n',
           call_us: 'أتصل بنا',
           testsPage: {
-            notFound:'ﻻ يوجد نتائج',
+            notFound: 'ﻻ يوجد نتائج',
             clearFilter: 'نتظيف الفلتر',
             category: {
               text: 'المجال',

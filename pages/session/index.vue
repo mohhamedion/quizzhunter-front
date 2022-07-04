@@ -52,6 +52,7 @@
 import Answer from "../../components/sessions/answer";
 import CodeField from "../../components/UX-UI/code-field";
 
+
 export default {
 
   components: {
@@ -124,15 +125,10 @@ export default {
     },
 
 
-    isRtl(string) {
-      let english = /^[A-Za-z0-9]*$/;
-      return english.test(string);
-    }
-
   },
   computed:{
     questionDirectionIsRtl(){
-     return !this.isRtl(this.questions[this.questionIndex].question.question);
+     return !this.$languageHelper.isRtl(this.questions[this.questionIndex].question.question);
     }
 
   },

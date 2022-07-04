@@ -21,8 +21,6 @@
 </style>
 <template>
   <div>
-
-
     <v-main class="mainbg">
       <v-container>
         <v-row>
