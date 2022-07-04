@@ -71,6 +71,12 @@ export default {
       fallbackLocale: 'en',
       messages: {
         en: {
+          profile:{
+            profile:'Profile'
+          },
+          session:{
+              theAnswer:'The answer'
+          },
           test: {
             author: 'Author',
             comment:'Comment',
@@ -121,6 +127,9 @@ export default {
           }
         },
         ar: {
+          profile:{
+            profile:'الملف الشخصي'
+          },
           test: {
             author: 'الكاتب',
             comment:'علق',

@@ -17,8 +17,8 @@
       <div>
         <div class=" "
              v-text="'questions '+(questionsCount-questions.length+1 + this.questionIndex) + '/' + questionsCount "></div>
-        <div class="text-h5 text-right "
-             :class="!this.isRtl(questions[this.questionIndex].question.question) ? 'rtl' : '' "
+        <div class="text-h5  "
+             :class="[!questionDirectionIsRtl ? 'rtl text-right' : '',]"
              v-text="questions[this.questionIndex].question.question"></div>
       </div>
 
@@ -38,7 +38,7 @@
 
       <div class="text-right">
         <v-btn color="primary" @click="answerQuestion">
-          الاجابة
+          {{ $t('session.theAnswer') }}
         </v-btn>
       </div>
 
@@ -123,6 +123,12 @@ export default {
     isRtl(string) {
       let english = /^[A-Za-z0-9]*$/;
       return english.test(string);
+    }
+
+  },
+  computed:{
+    questionDirectionIsRtl(){
+     return !this.isRtl(this.questions[this.questionIndex].question.question);
     }
 
   },

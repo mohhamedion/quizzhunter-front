@@ -261,8 +261,6 @@
 </script>
 <script>
 
-
-
 import Comment from "../../components/comments/comment";
 import RegisterForm from '../../components/register-form/register-form';
 

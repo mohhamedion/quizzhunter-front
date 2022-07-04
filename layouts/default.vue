@@ -40,7 +40,7 @@
             :to="'/profile/'+this.$auth.user.id"
           >
             <v-list-item-content>
-              <v-list-item-title class="text-right">الملف الشخصي</v-list-item-title>
+              <v-list-item-title class="text-right">{{$t('profile.profile')}}</v-list-item-title>
             </v-list-item-content>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
@@ -263,7 +263,7 @@ export default {
     selectedItem: null,
     notificationsCount: 0,
     items: [
-      {text: 'الملف الشخصي', icon: 'mdi-account', to: `/profile/`},
+      {text: 'profile', icon: 'mdi-account', to: `/profile/`},
     ],
     notifications: [],
   }),
