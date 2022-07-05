@@ -75,12 +75,24 @@ export default {
       messages: {
         en: {
 
+          result:{
+            youPass:'You passed the test',
+            youDidntPass:"You didn't pass the test",
+            whatIsYourRating:'How do you rate this test?'
+          },
           comment: {
             leaveComment: 'Leave comment',
             replay: 'replay'
           },
           profile: {
-            profile: 'Profile'
+            profile: 'Profile',
+            testDetails:'Test details',
+            didntPassTheTest:"Didn't pass the test",
+            passedTheTest:'He passed the test',
+            lastActivity: 'Last activity',
+            settings:'Settings',
+            heTested:'User tested',
+            andFinishedWithResult:'And finished with result of '
           },
           session: {
             theAnswer: 'The answer'
@@ -135,13 +147,25 @@ export default {
           }
         },
         ar: {
+          result:{
+            youPass:'نجحت في الاختبار',
+            youDidntPass:"لم تنجح في الاختبار",
+            whatIsYourRating:'ماهو تقييمك لهذا الاختبار؟'
+          },
           comment: {
             leaveComment: 'اترك تعليقا',
             replay: 'رد'
           },
 
           profile: {
-            profile: 'الملف الشخصي'
+            profile: 'الملف الشخصي',
+            testDetails:'تفاصيل الاختبار',
+            didntPassTheTest:"لم ينجح  في الاختبار",
+            passedTheTest:'نجح في الاختبار',
+            lastActivity: ' النشاط الاخير',
+            settings:'الاعدادات',
+            heTested:'قد اختبر',
+            andFinishedWithResult:'وانهى الاختبار بنتيجة'
           },
           test: {
             author: 'الكاتب',
@@ -250,6 +274,6 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib', "tiptap-vuetify"]
+    transpile: ['vuetify/lib', "tiptap-vuetify",'/plugins']
   }
 }

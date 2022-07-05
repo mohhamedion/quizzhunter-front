@@ -15,7 +15,7 @@
         <v-spacer></v-spacer>
 
         <div class="text-h5">{{ user.firstname }} {{ user.lastname }}</div>
-        <NuxtLink v-if="this.$auth.user&&user.id===this.$auth.user.id" to="settings">الاعدادات</NuxtLink>
+        <NuxtLink v-if="this.$auth.user&&user.id===this.$auth.user.id" to="settings">{{$t('profile.settings')}}</NuxtLink>
         <!--        <div>-->
         <!--          <v-chip-->
         <!--            color="primary"-->
@@ -51,7 +51,8 @@
         <!--          الاختبارات-->
         <!--        </v-tab>-->
         <v-tab>
-          النشاط الاخير
+
+          {{$t('profile.lastActivity')}}
         </v-tab>
 
       </v-tabs>
@@ -69,27 +70,31 @@
           <v-alert
             dark
           >
-
-            <div class="text-right">
+            <div :class="textClass">
               <div
                 v-if="session.questions_per_session ? session.totalPoints/session.questions_per_session>=0.5  : session.totalPoints/session.session_questions_count >=0.5">
                 <v-icon color="green">✓</v-icon>
-                نجح في الاختبار
+                {{$t('profile.passedTheTest')}}
               </div>
               <div v-else>
                 <v-icon color="red">X</v-icon>
-                لم ينجح في الاختبار
+                {{$t('profile.didntPassTheTest')}}
               </div>
             </div>
+            <div :class="textClass">
+              <template v-if="siteIsRtl" >
+                {{$t('profile.andFinishedWithResult')}} {{ session.totalPoints }}/{{ session.session_questions_count }}
+                {{ session.test.category.category }} {{$t('profile.heTested')}}
+              </template>
+              <template v-else>
+                {{$t('profile.heTested')}} {{ session.test.category.category }}
+                {{$t('profile.andFinishedWithResult')}} {{ session.totalPoints }}/{{ session.session_questions_count }}
+              </template>
 
-            <div class="text-right">
-              و انهى الاختبار بنتيجة {{ session.totalPoints }}/{{ session.session_questions_count }}
-              {{ session.test.category.category }} قد اختبر
               <div>
-                <NuxtLink :to="'/results/'+session.id"> تفاصيل الاختبار</NuxtLink>
+                <NuxtLink :to="'/results/'+session.id"> {{$t('profile.testDetails')}}</NuxtLink>
               </div>
             </div>
-
           </v-alert>
         </v-col>
       </v-row>
@@ -115,6 +120,16 @@ export default {
   mounted() {
     // this.getTests();
   },
+  computed:{
+    siteIsRtl(){
+      return this.$languageHelper.siteIsRtl();
+    },
+    textClass(){
+      return this.$languageHelper.textClass();
+    },
+
+  }
+  ,
   methods: {
     getTests() {
 

@@ -4,17 +4,25 @@
 <template>
   <v-container>
 
-    <div class="text-h4 text-right">
-      "{{ result.test.category.category }}: {{ result.test.level.level }}" نتائج الاختبار
+    <div class="text-h4" :class="this.$languageHelper.textClass()">
+      <template v-if="this.$languageHelper.siteIsRtl()">
+        "{{ result.test.category.category }}: {{ result.test.level.level }}"
+        نتائج الاختبار
+      </template>
+      <template v-else>
+        Test result
+        "{{ result.test.category.category }}: {{ result.test.level.level }}"
+
+      </template>
     </div>
 
     <v-alert :type="percent >= 50 ? 'passed' : 'fail' " class="my-5">
       <div class="text-h4 text-center my-5">
         <div v-if="percent >= 50">
-          نجحت في الاختبار
+          {{$t('result.youPass')}}
         </div>
         <div v-else>
-          لم تنجح في الاختبار
+          {{$t('result.youDidntPass')}}
         </div>
       </div>
     </v-alert>
@@ -22,7 +30,7 @@
     <div class="text-center text-h5"
          v-if="result.showRate"
     >
-      ماهو تقييمك لهذا الاختبار؟
+      {{$t('result.whatIsYourRating')}}
       <v-rating
         hover
         length="5"
