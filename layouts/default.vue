@@ -37,7 +37,7 @@
           color="primary"
         >
           <v-list-item
-            :to="'/profile/'+this.$auth.user.id"
+            :to="localePath('/profile/'+this.$auth.user.id)"
           >
             <v-list-item-content>
               <v-list-item-title class="text-right">{{$t('profile.profile')}}</v-list-item-title>
@@ -66,7 +66,7 @@
           color="primary"
         >
           <v-list-item
-            to="/login"
+            :to="localePath('/login')"
           >
             <v-list-item-content>
               <v-list-item-title class="text-right"> {{$t('auth.login')}}</v-list-item-title>
@@ -77,7 +77,7 @@
             </v-list-item-icon>
           </v-list-item>
           <v-list-item
-            to="/register"
+            :to="localePath('/register')"
           >
             <v-list-item-content>
               <v-list-item-title class="text-right">{{$t('auth.register')}}</v-list-item-title>
@@ -92,7 +92,7 @@
 
       <div>
         <v-list-item
-          to="/tests"
+          :to="localePath('/tests')"
         >
           <v-list-item-content>
             <v-list-item-title class="text-right">{{$t('tests')}}</v-list-item-title>
@@ -109,7 +109,7 @@
     <v-app-bar dark app>
 
       <template>
-        <NuxtLink to="/" class="remove-link-style white--text">
+        <NuxtLink :to="localePath('/')" class="remove-link-style white--text">
 
           <v-col>
             <v-toolbar-title>QH
@@ -182,7 +182,7 @@
 
               v-for="(item, index) in notifications"
               :key="index"
-              :to="item.link || '#'"
+              :to="localePath(item.link) || '#'"
             >
               <v-list-item-title>
                 <v-list-item-icon>

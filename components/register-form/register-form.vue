@@ -63,7 +63,7 @@
               :messages="this.errors.c_password"
             ></v-text-field>
           </div>
-          <div class="my-1">{{$t('auth.youAgreeWithTerms')}} <NuxtLink to="/policy">{{$t('auth.terms')}}</NuxtLink> {{$t('auth.and')}}  <NuxtLink to="privacy">{{$t('auth.privacy')}}</NuxtLink></div>
+          <div class="my-1">{{$t('auth.youAgreeWithTerms')}} <NuxtLink :to="localePath('/policy')">{{$t('auth.terms')}}</NuxtLink> {{$t('auth.and')}}  <NuxtLink :to="localePath('privacy')">{{$t('auth.privacy')}}</NuxtLink></div>
 
           <div>
             <v-btn @click="register"> {{$t('auth.createNewAccount')}}</v-btn>
@@ -125,7 +125,7 @@ export default {
         .then((res) => {
           this.$auth.setUserToken(res.data.token).then(() => {
               if(this.redirect){
-                this.$router.push('/')
+                this.$router.push(this.localePath('/'))
               }
               else{
                 this.callbackFunction();

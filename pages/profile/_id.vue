@@ -15,7 +15,7 @@
         <v-spacer></v-spacer>
 
         <div class="text-h5">{{ user.firstname }} {{ user.lastname }}</div>
-        <NuxtLink v-if="this.$auth.user&&user.id===this.$auth.user.id" to="settings">{{$t('profile.settings')}}</NuxtLink>
+        <NuxtLink v-if="this.$auth.user&&user.id===this.$auth.user.id" :to="localePath('settings')">{{$t('profile.settings')}}</NuxtLink>
         <!--        <div>-->
         <!--          <v-chip-->
         <!--            color="primary"-->
@@ -92,7 +92,7 @@
               </template>
 
               <div>
-                <NuxtLink :to="'/results/'+session.id"> {{$t('profile.testDetails')}}</NuxtLink>
+                <NuxtLink :to="localePath('/results/'+session.id)"> {{$t('profile.testDetails')}}</NuxtLink>
               </div>
             </div>
           </v-alert>

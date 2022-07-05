@@ -11,7 +11,7 @@
 
         <template v-if="this.$languageHelper.siteIsRtl()">
 
-          <NuxtLink :to="'/profile/'+comment.user.id">{{ comment.user.firstname }} {{ comment.user.lastname }}</NuxtLink>
+          <NuxtLink :to="localePath('/profile/'+comment.user.id)">{{ comment.user.firstname }} {{ comment.user.lastname }}</NuxtLink>
           <v-avatar>
             <img
               :src="require(`~/assets/img/quizzhunter.png`)"
@@ -27,7 +27,7 @@
               :alt="comment.user.firstname"
             >
           </v-avatar>
-          <NuxtLink :to="'/profile/'+comment.user.id">{{ comment.user.firstname }} {{ comment.user.lastname }}</NuxtLink>
+          <NuxtLink :to="localePath('/profile/'+comment.user.id)">{{ comment.user.firstname }} {{ comment.user.lastname }}</NuxtLink>
 
         </template>
 

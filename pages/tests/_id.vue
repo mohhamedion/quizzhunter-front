@@ -125,7 +125,7 @@
               width="100%"
               color="green white--text"
               v-if="sessionExist"
-              to="/session"
+              :to="localePath('/session')"
             >
               <v-card-text>{{$t('test.ContinuePreviousTest')}}</v-card-text>
             </v-btn>
@@ -365,7 +365,7 @@ export default {
         {
           test_id: this.$route.params.id
         }).then(res => {
-        this.$router.push({path: '/session'});
+        this.$router.push({path: this.localePath('/session')});
 
       }).catch(err => {
         alert('err')

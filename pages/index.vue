@@ -44,7 +44,7 @@
                 {{$t('best_way_to_test_skills')}}
               </div>
               <div class="my-5">
-                <v-btn dark to="tests" class="greenbtn" min-width="200" min-height="50">{{$t('tests')}}</v-btn>
+                <v-btn dark :to="localePath('/tests')" class="greenbtn" min-width="200" min-height="50">{{$t('tests')}}</v-btn>
                 <!--              <v-btn class="red" min-width="100" min-height="50">HR</v-btn>-->
               </div>
             </v-col>
@@ -155,7 +155,7 @@
       >
         {{ 2020 }} - {{ new Date().getFullYear() }} — <strong>QuizzHunter</strong>
         <div>
-          <NuxtLink to="/contact-us">{{ $t('call_us') }}</NuxtLink>
+          <NuxtLink :to="localePath('/contact-us')">{{ $t('call_us') }}</NuxtLink>
         </div>
       </v-col>
     </v-footer>

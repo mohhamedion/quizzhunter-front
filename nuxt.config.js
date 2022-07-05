@@ -156,7 +156,9 @@ export default {
             leaveComment: 'اترك تعليقا',
             replay: 'رد'
           },
-
+          session: {
+            theAnswer: 'أجب'
+          },
           profile: {
             profile: 'الملف الشخصي',
             testDetails:'تفاصيل الاختبار',

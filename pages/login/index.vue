@@ -69,7 +69,7 @@ export default {
 
   middleware({redirect, $auth}) {
     if ($auth.loggedIn) {
-      return redirect('/')
+      return redirect(this.localePath('/'))
     }
   },
 
@@ -79,7 +79,7 @@ export default {
       this.$auth.loginWith('local', {data: {email: this.email, password: this.password}})
         .then((res) => {
           this.loading = false
-          this.$router.push('/')
+          this.$router.push(this.localePath('/'))
         }).catch(err => {
         this.errors = err.response.data.error || err.response.data.errors;
         this.loading = false;

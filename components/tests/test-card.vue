@@ -1,7 +1,7 @@
 <template>
 
   <v-card
-    :to="'/tests/'+test.id"
+    :to="localePath('/tests/'+test.id)"
     link
     :loading="loading"
     class="mx-auto my-12"

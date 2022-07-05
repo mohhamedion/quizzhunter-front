@@ -13,7 +13,7 @@
       <div v-else>
         {{ otherError }}
       </div>
-      <NuxtLink to="/">
+      <NuxtLink :to="localePath('/')">
         الصفحة الرئيسية
       </NuxtLink>
     </div>

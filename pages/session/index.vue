@@ -58,7 +58,7 @@ export default {
   components: {
     Answer, CodeField
   },
-  async asyncData({$axios,redirect}) {
+  async asyncData({$axios,redirect,localePath}) {
     try{
       const result = await $axios.get(`${process.env.baseUrl}/api/testSessions`);
 
@@ -73,7 +73,7 @@ export default {
 
       return {session, test, questionsCount, questions, timeLeftString, timeInteger};
     }catch (ex){
-      redirect('/');
+      redirect(localePath('/'));
     }
 
   },
@@ -119,8 +119,9 @@ export default {
 
     endSession() {
       clearInterval(this.interval);
-      if (this.$router.currentRoute.path == "/session") {
-        this.$router.push({path: `/results/${this.session.id}`});
+      console.log(this.$router.currentRoute.path);
+      if (this.$router.currentRoute.path == "/session" || this.$router.currentRoute.path == "/ar/session") {
+        this.$router.push(this.localePath({path: `/results/${this.session.id}`}));
       }
     },
 
@@ -129,7 +130,7 @@ export default {
   computed:{
     questionDirectionIsRtl(){
      return !this.$languageHelper.isRtl(this.questions[this.questionIndex].question.question);
-    }
+    },
 
   },
   mounted() {

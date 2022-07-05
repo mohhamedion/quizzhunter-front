@@ -9,7 +9,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          :to="item.link"
+          :to="localePath(item.link)"
           link
         >
           <v-list-item-icon>
