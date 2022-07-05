@@ -149,6 +149,10 @@
     <div id="line"></div>
 
     <v-footer dark padless>
+      <v-col class="text-center">
+        <v-btn :to="switchLocalePath('en')">English</v-btn>
+        <v-btn :to="switchLocalePath('ar')">عربي</v-btn>
+      </v-col>
       <v-col
         class="text-center "
         cols="12"
@@ -204,9 +208,6 @@ export default {
       textClass(){
         return this.$i18n.locale === 'ar' ? 'text-right' : 'text-left'
       }
-    },
-    availableLocales () {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
     }
   ,
   mounted() {
