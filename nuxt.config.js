@@ -33,7 +33,10 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/TiptapVuetify'],
+  plugins: [
+    '~/plugins/TiptapVuetify',
+    '~/plugins/axios'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -53,8 +56,13 @@ export default {
     }]
   ],
 
+  // Axios configuration
+  axios: {
+    baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
+    proxy: false
+  },
 
-  endpoint:'http://localhost',
+  endpoint:'http://localhost:8080',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   loading: '~/components/loading.vue',
   vuetify: {
@@ -95,9 +103,9 @@ export default {
         },
 
         endpoints: {
-          login: {url: 'https://quizzhunter-api.tavakal.com/api/login', method: 'post'},
-          logout: {url: 'https://quizzhunter-api.tavakal.com/api/logout', method: 'post'},
-          user: {url: 'https://quizzhunter-api.tavakal.com/api/user', method: 'get'}
+          login: {url: 'http://localhost:8080/api/login', method: 'post'},
+          logout: {url: 'http://localhost:8080/api/logout', method: 'post'},
+          user: {url: 'http://localhost:8080/api/user', method: 'get'}
         }
       }
     }
@@ -105,7 +113,7 @@ export default {
 
 
   env: {
-    baseUrl: process.env.BASE_URL || 'https://quizzhunter-api.tavakal.com'
+    baseUrl: process.env.BASE_URL || 'http://localhost:8080'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
