@@ -115,5 +115,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vuetify/lib', "tiptap-vuetify"]
+  },
+  // Server configuration
+  server: {
+    host: process.env.HOST || '0.0.0.0',
+    port: process.env.PORT || 3000
   }
 }

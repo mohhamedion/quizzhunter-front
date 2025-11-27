@@ -20,6 +20,9 @@ RUN /usr/local/bin/build.sh
 # Production stage
 FROM node:14-alpine
 
+# Install curl and other utilities for debugging
+RUN apk add --no-cache curl
+
 WORKDIR /app
 
 # Install only production dependencies
@@ -33,7 +36,8 @@ COPY --from=builder /app/.nuxt ./.nuxt
 # Copy production entrypoint and build script
 COPY docker/entrypoint-prod.sh /usr/local/bin/entrypoint-prod.sh
 COPY docker/build.sh /usr/local/bin/build.sh
-RUN chmod +x /usr/local/bin/entrypoint-prod.sh /usr/local/bin/build.sh
+COPY docker/check-build.sh /usr/local/bin/check-build.sh
+RUN chmod +x /usr/local/bin/entrypoint-prod.sh /usr/local/bin/build.sh /usr/local/bin/check-build.sh
 
 # Expose port
 EXPOSE 3000
