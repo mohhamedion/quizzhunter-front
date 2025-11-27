@@ -1,3 +1,90 @@
+/* Global RTL Support */
+html {
+  direction: rtl;
+}
+
+body {
+  direction: rtl;
+}
+
+/* Vuetify RTL Support */
+.v-application {
+  direction: rtl;
+}
+
+/* Keep toolbar content in LTR */
+.v-toolbar__content,
+.v-app-bar__content {
+  direction: ltr !important;
+}
+
+/* Keep home page in LTR */
+div[dir="ltr"],
+div[dir="ltr"] .v-main,
+div[dir="ltr"] .v-container,
+div[dir="ltr"] .v-main .mainbg,
+div[dir="ltr"] .v-main .mainbg .v-container {
+  direction: ltr !important;
+}
+
+/* Make all select elements RTL */
+.v-select,
+.v-select .v-select__selection,
+.v-select .v-input__control,
+.v-select .v-input__slot {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Make select labels RTL */
+.v-select .v-label,
+.v-select label,
+.v-input--is-label-active .v-label,
+.v-input label,
+.v-text-field .v-label,
+.v-text-field label {
+  direction: rtl !important;
+  text-align: right !important;
+  transform-origin: top right !important;
+}
+
+/* Fix label position for RTL - default state */
+.v-input .v-label {
+  right: 0 !important;
+  left: auto !important;
+  text-align: right !important;
+}
+
+/* Fix label position for RTL - active/focused state */
+.v-input--is-label-active .v-label,
+.v-input--is-focused .v-label {
+  transform: translateY(-18px) scale(0.75) !important;
+  right: 0 !important;
+  left: auto !important;
+  transform-origin: top right !important;
+}
+
+/* Ensure input slots are RTL */
+.v-input__slot {
+  direction: rtl;
+}
+
+/* Specific fix for tests page selects */
+.bg-grey .v-select .v-label,
+.bg-grey .v-select label {
+  direction: rtl !important;
+  text-align: right !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Make select menu items RTL */
+.v-menu__content .v-list,
+.v-menu__content .v-list-item {
+  direction: rtl;
+  text-align: right;
+}
+
 .primary {
   color: #4d96e4;
 }

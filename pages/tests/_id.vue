@@ -91,14 +91,6 @@
             </v-list-item>
           </v-list>
 
-          <!-- اعلانات صفحة الاختبارات -->
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-2029123904217360"
-               data-ad-slot="5856570912"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-
           <v-card-actions>
 
             <v-btn
@@ -247,11 +239,6 @@
   </v-container>
 </template>
 
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-
-</script>
 <script>
 
 
@@ -298,17 +285,30 @@ export default {
     let bestUsers = await fetch(`${process.env.baseUrl}/api/testSessions/best-users/${params.id}`).then(res =>
       res.json()
     );
-    const result = await $axios.get(`${process.env.baseUrl}/api/tests/${params.id}`);
-    const test = result.data.data;
-    const comments = test.comments;
-    let sessionExist;
-    if ($auth.loggedIn) {
-      sessionExist = (await $axios.get(`${process.env.baseUrl}/api/testSessions/current-session-exist`)).data;
+    
+    try {
+      const result = await $axios.get(`${process.env.baseUrl}/api/tests/${params.id}`);
+      // TestResource returns {data: {...}} format
+      const test = result.data.data || result.data;
+      if (!test) {
+        throw new Error('Test not found');
+      }
+      const comments = test.comments || [];
+      
+      test.questions_per_session = test.questions_per_session || test.questions_count;
+      
+      let sessionExist;
+      if ($auth.loggedIn) {
+        sessionExist = (await $axios.get(`${process.env.baseUrl}/api/testSessions/current-session-exist`)).data;
+      }
+
+      return {test, bestUsers, lastSessions, sessionExist, comments};
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        throw new Error('Test not found');
+      }
+      throw error;
     }
-
-    test.questions_per_session = test.questions_per_session || test.questions_count ;
-
-    return {test, bestUsers, lastSessions, sessionExist, comments};
   },
 
   methods: {

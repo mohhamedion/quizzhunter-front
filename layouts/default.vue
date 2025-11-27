@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" dir="rtl">
     <v-navigation-drawer
       v-model="drawer"
       disable-resize-watcher
@@ -44,6 +44,16 @@
             </v-list-item-content>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+          <v-list-item
+            to="/create-test"
+          >
+            <v-list-item-content>
+              <v-list-item-title class="text-right">إنشاء اختبار</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>mdi-plus-circle</v-icon>
             </v-list-item-icon>
           </v-list-item>
         </v-list-item-group>

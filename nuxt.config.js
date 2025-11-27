@@ -7,7 +7,8 @@ export default {
     titleTemplate: '%s - quizzhunter',
     title: 'quizzhunter',
     htmlAttrs: {
-      lang: 'ar'
+      lang: 'ar',
+      dir: 'rtl'
     },
     meta: [
       {charset: 'utf-8'},
@@ -16,13 +17,6 @@ export default {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.png'}
-    ],
-    script: [
-      {
-        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-        'data-ad-client': 'ca-pub-2029123904217360',
-        async: true
-      }
     ]
   },
 
@@ -35,7 +29,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/TiptapVuetify',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    { src: '~/plugins/toast', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -67,6 +62,8 @@ export default {
   loading: '~/components/loading.vue',
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    defaultLocale: 'ar',
+    rtl: true,
     theme: {
       dark: false,
       themes: {

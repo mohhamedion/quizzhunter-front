@@ -20,7 +20,7 @@
 
 </style>
 <template>
-  <div>
+  <div dir="ltr">
 
 
     <v-main class="mainbg">
@@ -47,6 +47,18 @@
             </div>
             <div class="my-5">
               <v-btn dark to="tests" class="greenbtn" min-width="200" min-height="50">الاختبارات</v-btn>
+              <v-btn
+                v-if="$auth.loggedIn"
+                dark
+                to="/create-test"
+                color="success"
+                class="ml-2"
+                min-width="200"
+                min-height="50"
+              >
+                <v-icon left>mdi-plus-circle</v-icon>
+                إنشاء اختبار
+              </v-btn>
 <!--              <v-btn class="red" min-width="100" min-height="50">HR</v-btn>-->
             </div>
           </v-col>

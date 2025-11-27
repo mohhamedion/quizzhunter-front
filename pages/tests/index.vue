@@ -5,7 +5,7 @@
     <v-row>
       <v-col lg="3" cols="12">
 
-        <div class="bg-grey">
+        <div class="bg-grey" dir="rtl">
 
           <v-select
             :items="levels"
@@ -13,10 +13,11 @@
             item-text="level"
             v-model="search.level"
             :menu-props="{ maxHeight: '400' }"
-            label="Level"
+            label="الصعوبة"
             hint="اختر درحة الصعوبة"
             persistent-hint
             v-on:change="filter"
+            dir="rtl"
           ></v-select>
 
           <v-select
@@ -25,10 +26,11 @@
             item-text="category"
             v-model="search.category"
             :menu-props="{ maxHeight: '400' }"
-            label="Category"
+            label="الفئة"
             hint="اختر المجال"
             persistent-hint
             v-on:change="filter"
+            dir="rtl"
           ></v-select>
 
           <v-btn v-if="this.search.level||this.search.category" class="col-12" @click="clearFilter">
