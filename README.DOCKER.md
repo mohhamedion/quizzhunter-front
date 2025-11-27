@@ -63,30 +63,75 @@ BASE_URL=http://localhost:8080
 
 ## Running with Docker Compose
 
-### Start the container:
+### Development Mode
+
+#### Start the container:
 
 ```bash
 docker-compose up -d
 ```
 
-### View logs:
+#### View logs:
 
 ```bash
 docker-compose logs -f
 ```
 
-### Stop the container:
+#### Stop the container:
 
 ```bash
 docker-compose down
 ```
 
-### Rebuild after dependency changes:
+#### Rebuild after dependency changes:
 
 ```bash
 docker-compose build --no-cache
 docker-compose up -d
 ```
+
+### Production Mode
+
+For production, you have two options:
+
+#### Option 1: Use Production Dockerfile (Recommended)
+
+This builds the application during the Docker build process:
+
+```bash
+# Build and start production container
+docker-compose -f docker-compose.prod.yml up -d --build
+
+# View logs
+docker-compose -f docker-compose.prod.yml logs -f
+
+# Stop
+docker-compose -f docker-compose.prod.yml down
+```
+
+#### Option 2: Build in Existing Container
+
+If you're using the regular docker-compose.yml, you can build inside the container:
+
+```bash
+# Start container (development mode)
+docker-compose up -d
+
+# Build the application inside the container
+docker-compose exec frontend npm run build
+
+# Switch to production mode by updating environment
+# Edit docker-compose.yml and change:
+#   - NODE_ENV=production
+#   - entrypoint: /usr/local/bin/entrypoint-prod.sh
+# Then restart:
+docker-compose restart frontend
+```
+
+**Important for Production:**
+- The `.nuxt` directory must be populated with built assets
+- Use `npm run build` to generate production assets
+- Production mode uses `npm run start` instead of `npm run dev`
 
 ## File Syncing
 
@@ -152,6 +197,32 @@ If the frontend can't connect to the backend:
 5. Ensure backend is accessible from the browser (test by opening the URL in browser)
 6. Ensure backend CORS is configured to allow requests from your frontend domain
 7. Check browser console for CORS errors
+
+### Empty .nuxt directory (Production Mode)
+
+If you're running in production mode and the `.nuxt` directory is empty:
+
+**Solution 1: Build inside the container**
+```bash
+docker-compose exec frontend npm run build
+```
+
+**Solution 2: Use production Dockerfile**
+```bash
+docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+**Solution 3: Build manually before starting**
+```bash
+# Build the application
+docker-compose exec frontend npm run build
+
+# Then restart with production entrypoint
+# Update docker-compose.yml to use entrypoint-prod.sh
+docker-compose restart frontend
+```
+
+**Note:** In development mode, Nuxt generates assets on-demand. In production mode, you must run `npm run build` first.
 
 ### Node modules issues
 

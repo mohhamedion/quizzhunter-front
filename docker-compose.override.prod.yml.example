@@ -1,0 +1,13 @@
+# Production override for docker-compose.yml
+# To use: docker-compose -f docker-compose.yml -f docker-compose.override.prod.yml.yml up -d
+
+version: '3.8'
+
+services:
+  frontend:
+    environment:
+      - NODE_ENV=production
+    entrypoint: /usr/local/bin/entrypoint-prod.sh
+    # Remove volume mounts for production (use built image)
+    volumes: []
+
