@@ -1,5 +1,8 @@
 FROM node:14-alpine
 
+# Install bash for easier container access
+RUN apk add --no-cache bash
+
 # Set working directory
 WORKDIR /app
 

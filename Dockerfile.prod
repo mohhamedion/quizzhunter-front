@@ -20,8 +20,8 @@ RUN /usr/local/bin/build.sh
 # Production stage
 FROM node:14-alpine
 
-# Install curl and other utilities for debugging
-RUN apk add --no-cache curl
+# Install curl, bash, and other utilities for debugging
+RUN apk add --no-cache curl bash
 
 WORKDIR /app
 
