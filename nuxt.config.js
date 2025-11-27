@@ -53,11 +53,11 @@ export default {
 
   // Axios configuration
   axios: {
-    baseURL: process.env.API_BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080',
+    baseURL: process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro',
     proxy: false
   },
 
-  endpoint: process.env.API_BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080',
+  endpoint: process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro',
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   loading: '~/components/loading.vue',
   vuetify: {
@@ -100,9 +100,9 @@ export default {
         },
 
         endpoints: {
-          login: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080') + '/api/login', method: 'post'},
-          logout: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080') + '/api/logout', method: 'post'},
-          user: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080') + '/api/user', method: 'get'}
+          login: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/login', method: 'post'},
+          logout: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/logout', method: 'post'},
+          user: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/user', method: 'get'}
         }
       }
     }
@@ -110,7 +110,7 @@ export default {
 
 
   env: {
-    baseUrl: process.env.BASE_URL || process.env.BACKEND_URL || 'http://localhost:8080'
+    baseUrl: process.env.BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
