@@ -39,7 +39,7 @@
 
       <v-row class="text-center">
         <v-col>
-          <div class="text-h3">{{ marks }}</div>
+          <div class="text-h3">{{ formatMarks(marks) }}</div>
           <span class="text--disabled">marks</span>
 
         </v-col>
@@ -50,7 +50,7 @@
         </v-col>
 
         <v-col>
-          <div class="text-h3">{{ points }}</div>
+          <div class="text-h3">{{ formatPoints(points) }}</div>
           <span class="text--disabled">wining point</span>
         </v-col>
       </v-row>
@@ -112,6 +112,12 @@ export default {
     return {result, sessionQuestions, marks, percent, points};
   },
   methods: {
+    formatMarks(value) {
+      return parseFloat(value).toFixed(1);
+    },
+    formatPoints(value) {
+      return parseFloat(value).toFixed(1);
+    },
     rate(rate) {
       this.$axios.post(`${process.env.baseUrl}/api/rate`, {
         rate: rate,

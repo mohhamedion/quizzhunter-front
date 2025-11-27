@@ -81,7 +81,7 @@
                           </div>
                           <div class="text-body-2 mb-2">
                             <v-icon small class="mr-1">mdi-chart-line</v-icon>
-                            النتيجة: {{ session.totalPoints }} / {{ session.session_questions_count }}
+                            النتيجة: {{ formatPoints(session.totalPoints) }} / {{ session.session_questions_count }}
                           </div>
                           <div class="text-body-2" v-if="session.test">
                             <v-icon small class="mr-1">mdi-clock-outline</v-icon>
@@ -172,6 +172,9 @@ export default {
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
+    },
+    formatPoints(value) {
+      return parseFloat(value).toFixed(1);
     }
   },
   async asyncData({params, $axios}) {

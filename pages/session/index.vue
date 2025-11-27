@@ -24,8 +24,10 @@
 
       <v-spacer></v-spacer>
 
-      <CodeField v-if="questions[this.questionIndex].question.code" :code="questions[this.questionIndex].question.code"
-                 :language="test.category.category.toLowerCase"></CodeField>
+      <div dir="ltr" style="direction: ltr;">
+        <CodeField v-if="questions[this.questionIndex].question.code" :code="questions[this.questionIndex].question.code"
+                   :language="test.category.category.toLowerCase"></CodeField>
+      </div>
 
       <div class="my-5">
 

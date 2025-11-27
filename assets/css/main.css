@@ -16,6 +16,13 @@ body {
 .v-toolbar__content,
 .v-app-bar__content {
   direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Fix dark mode switcher in toolbar */
+.dark-mode-switcher,
+.dark-mode-switcher * {
+  direction: ltr !important;
 }
 
 /* Keep home page in LTR */
@@ -94,6 +101,18 @@ div[dir="ltr"] .v-main .mainbg .v-container {
 
 .code-background{
   background-color:#212529
+}
+
+/* Ensure all code sections are LTR */
+pre,
+code,
+.code-textarea,
+.code-textarea textarea,
+pre code,
+[dir="ltr"] pre,
+[dir="ltr"] code {
+  direction: ltr !important;
+  text-align: left !important;
 }
 
 .remove-link-style{

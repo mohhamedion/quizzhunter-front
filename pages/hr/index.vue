@@ -30,7 +30,7 @@
       class="elevation-1"
     >
       <template v-slot:item.points="{ item }">
-          <div class="green--text">{{ item.points }}</div>
+          <div class="green--text">{{ formatPoints(item.points) }}</div>
       </template>
       <template v-slot:item.id="{ item }">
          <v-btn class="green--text">أرسل دعوة لأنجاز اختبار</v-btn>
@@ -80,6 +80,11 @@ export default{
           id: '1',
         },
       ],
+    }
+  },
+  methods: {
+    formatPoints(value) {
+      return parseFloat(value).toFixed(1);
     }
   }
 }

@@ -1,23 +1,96 @@
 <style>
 .mainbg {
-  background:   #2b3137;
+  background: linear-gradient(135deg, #2b3137 0%, #1a1f24 100%);
   background-size: cover;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
 }
 
 #line {
   background: rgba(255, 0, 0, 0.68);
   padding-top: 0.75em;
+  height: 4px;
 }
 
 .greenbtn {
   box-shadow: 0 4px 12px rgb(77 186 151 / 50%);
+  transition: all 0.3s ease;
+}
+
+.greenbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(77 186 151 / 60%);
 }
 
 .rtl {
   direction: rtl;
 }
 
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
 
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4d96e4, #77ba99);
+  border-radius: 2px;
+}
+
+@media (max-width: 960px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Bottom section - respect dark mode */
+.home-bottom-section {
+  background-color: #f5f5f5;
+}
+
+.theme--dark .home-bottom-section {
+  background-color: #121212 !important;
+}
+
+.theme--dark .home-bottom-section .v-container {
+  background-color: transparent;
+}
 </style>
 <template>
   <div dir="ltr">
@@ -25,10 +98,10 @@
 
     <v-main class="mainbg">
       <v-container>
-
-        <v-row>
-          <v-col lg="4" cols="12">
-            <CodeField code="    class Employee {
+        <v-row align="center" justify="center">
+          <v-col lg="5" cols="12" class="text-center text-lg-right" dir="ltr" style="direction: ltr;">
+            <div dir="ltr" style="direction: ltr;">
+              <CodeField code="    class Employee {
           public fullname;
           public sallary;
 
@@ -36,102 +109,148 @@
           function passTest();
           function resiveSallary();
         }    " language="php" color="white--text"></CodeField>
+            </div>
           </v-col>
 
-          <v-col    lg="8" cols="12" class="text-right white--text">
-            <h1 class="text-h4 ">
+          <v-col lg="7" cols="12" class="white--text text-center text-lg-right">
+            <h1 class="hero-title">
               أختبر نفسك في مجالك وأبحث عن عمل
             </h1>
-            <div class="my-2">
-              😁 افضل طريقة لتختبر نفسك في مجال عملك
+            <div class="hero-subtitle">
+              😁 أفضل طريقة لتختبر نفسك في مجال عملك
             </div>
-            <div class="my-5">
-              <v-btn dark to="tests" class="greenbtn" min-width="200" min-height="50">الاختبارات</v-btn>
+            <div class="mt-6">
+              <v-btn 
+                large
+                dark 
+                to="tests" 
+                class="greenbtn mr-3 mb-3" 
+                min-width="200" 
+                min-height="56"
+              >
+                <v-icon left>mdi-test-tube</v-icon>
+                الاختبارات
+              </v-btn>
               <v-btn
                 v-if="$auth.loggedIn"
+                large
                 dark
                 to="/create-test"
                 color="success"
-                class="ml-2"
+                class="mb-3"
                 min-width="200"
-                min-height="50"
+                min-height="56"
               >
                 <v-icon left>mdi-plus-circle</v-icon>
                 إنشاء اختبار
               </v-btn>
-<!--              <v-btn class="red" min-width="100" min-height="50">HR</v-btn>-->
             </div>
           </v-col>
-
         </v-row>
-
-
       </v-container>
     </v-main>
 
     <div id="line"></div>
 
-    <v-main>
+    <v-main class="py-12">
       <v-container>
+        <h2 class="section-title text-center rtl">ماهو الـ QuizzHunter؟</h2>
 
-        <div class="text-h5 text-center rtl ">ماهو الـ QuizzHunter؟</div>
-
-        <v-row class="my-8">
-
-          <v-col cols="12" lg="6" align="center">
-            <v-img width="150" :src="require(`~/assets/img/1328246.svg`)"></v-img>
-            <div class="mt-2 text-h6 rtl">
-              يتم وضع الاختبارات من قبل اشخاص ذو خبرة, والشركات الباحثة عن موظفين.
-            </div>
+        <v-row class="mb-12">
+          <v-col cols="12" md="6" class="mb-6">
+            <v-card class="feature-card elevation-3" height="100%">
+              <v-card-text class="text-center pa-6">
+                <v-avatar size="120" color="primary" class="mb-4">
+                  <v-img 
+                    :src="require(`~/assets/img/1328246.svg`)"
+                    contain
+                  ></v-img>
+                </v-avatar>
+                <h3 class="text-h6 mb-3 rtl">اختبارات احترافية</h3>
+                <p class="text-body-1 rtl grey--text text--darken-1">
+                  يتم وضع الاختبارات من قبل أشخاص ذوي خبرة، والشركات الباحثة عن موظفين.
+                </p>
+              </v-card-text>
+            </v-card>
           </v-col>
-          <v-col cols="12" lg="6" align="center">
-            <v-img width="150" :src="require(`~/assets/img/programing.png`)"></v-img>
-            <div class="mt-2 text-h6 rtl">
-              هي منصة الكترونية تستطيع من خلالها اجتياز اختبارات في جميع لغات البرمجة.
-            </div>
+          <v-col cols="12" md="6" class="mb-6">
+            <v-card class="feature-card elevation-3" height="100%">
+              <v-card-text class="text-center pa-6">
+                <v-avatar size="120" color="success" class="mb-4">
+                  <v-img 
+                    :src="require(`~/assets/img/programing.png`)"
+                    contain
+                  ></v-img>
+                </v-avatar>
+                <h3 class="text-h6 mb-3 rtl">جميع لغات البرمجة</h3>
+                <p class="text-body-1 rtl grey--text text--darken-1">
+                  منصة إلكترونية تستطيع من خلالها اجتياز اختبارات في جميع لغات البرمجة.
+                </p>
+              </v-card-text>
+            </v-card>
           </v-col>
-
-        </v-row>
-        <!--second row-->
-
-        <div class="text-h5 text-center rtl ">لمن موجه الـ QuizzHunter ؟</div>
-
-        <v-row class="my-8">
-
-          <v-col cols="12" lg="6" align="center">
-            <v-img width="150" :src="require(`~/assets/img/choosing.png`)"></v-img>
-            <div class="mt-2 text-h6 rtl">
-              موجه للشركات البرمجية الباحثة عن موظفين, يقدم QuizzHunter بيانات الاختبارات للشركات, لسهولة انتقاء الموظفين.
-            </div>
-          </v-col>
-          <v-col cols="12" lg="6" align="center">
-            <v-img width="150" :src="require(`~/assets/img/interview.png`)"></v-img>
-            <div class="mt-2 text-h6 rtl">
-              موجه للمستجدين الباحثين عن عمل, يساعدك QuizzHunter على الاستعداد لمقابلات العمل.
-            </div>
-          </v-col>
-
-
-
         </v-row>
 
+        <h2 class="section-title text-center rtl mt-12">لمن موجه الـ QuizzHunter؟</h2>
 
+        <v-row class="mb-12">
+          <v-col cols="12" md="6" class="mb-6">
+            <v-card class="feature-card elevation-3" height="100%">
+              <v-card-text class="text-center pa-6">
+                <v-avatar size="120" color="info" class="mb-4">
+                  <v-img 
+                    :src="require(`~/assets/img/choosing.png`)"
+                    contain
+                  ></v-img>
+                </v-avatar>
+                <h3 class="text-h6 mb-3 rtl">للشركات</h3>
+                <p class="text-body-1 rtl grey--text text--darken-1">
+                  موجه للشركات البرمجية الباحثة عن موظفين، يقدم QuizzHunter بيانات الاختبارات للشركات، لسهولة انتقاء الموظفين.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col cols="12" md="6" class="mb-6">
+            <v-card class="feature-card elevation-3" height="100%">
+              <v-card-text class="text-center pa-6">
+                <v-avatar size="120" color="warning" class="mb-4">
+                  <v-img 
+                    :src="require(`~/assets/img/interview.png`)"
+                    contain
+                  ></v-img>
+                </v-avatar>
+                <h3 class="text-h6 mb-3 rtl">للباحثين عن عمل</h3>
+                <p class="text-body-1 rtl grey--text text--darken-1">
+                  موجه للمستجدين الباحثين عن عمل، يساعدك QuizzHunter على الاستعداد لمقابلات العمل.
+                </p>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-container>
-
     </v-main>
 
 
-    <v-main>
-      <div class="text-h5 text-center rtl ">ابدأ من هنا.</div>
-
-      <v-container aling="center">
-        <v-row>
-          <v-col xl="3" lg="3" cols="12" v-for="(test,i) in bestFive" :key="test.id">
-            <testCard v-if="i!==4" :test="test"></testCard>
+    <v-main class="py-12 home-bottom-section">
+      <v-container>
+        <h2 class="section-title text-center rtl mb-8">ابدأ من هنا</h2>
+        <v-row v-if="bestFive && bestFive.length > 0">
+          <v-col 
+            xl="3" 
+            lg="4" 
+            md="6" 
+            cols="12" 
+            v-for="(test,i) in bestFive" 
+            :key="test.id"
+            v-if="i !== 4"
+          >
+            <testCard :test="test"></testCard>
           </v-col>
         </v-row>
+        <div v-else class="text-center py-12">
+          <v-progress-circular indeterminate color="primary"></v-progress-circular>
+        </div>
       </v-container>
-
     </v-main>
     <div id="line"></div>
 

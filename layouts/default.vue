@@ -6,6 +6,7 @@
       default="false"
       app
       right
+      class="sidebar-drawer"
     >
       <v-col
         class="text-center mt-5 "
@@ -31,33 +32,80 @@
       </v-col>
 
 
-      <div v-if="this.$auth.loggedIn">
-        <v-list-item-group
-          v-model="selectedItem"
-          color="primary"
-        >
-          <v-list-item
-            :to="'/profile/'+this.$auth.user.id"
+      <div class="sidebar-content">
+        <div v-if="this.$auth.loggedIn">
+          <v-list-item-group
+            v-model="selectedItem"
+            color="primary"
           >
-            <v-list-item-content>
-              <v-list-item-title class="text-right">الملف الشخصي</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-          <v-list-item
-            to="/create-test"
-          >
-            <v-list-item-content>
-              <v-list-item-title class="text-right">إنشاء اختبار</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-icon>
-              <v-icon>mdi-plus-circle</v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-        </v-list-item-group>
+            <v-list-item
+              :to="'/profile/'+this.$auth.user.id"
+            >
+              <v-list-item-content>
+                <v-list-item-title class="text-right">الملف الشخصي</v-list-item-title>
+              </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item
+              to="/create-test"
+            >
+              <v-list-item-content>
+                <v-list-item-title class="text-right">إنشاء اختبار</v-list-item-title>
+              </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>mdi-plus-circle</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list-item-group>
+        </div>
 
+        <div v-else>
+          <v-list-item-group
+            color="primary"
+          >
+            <v-list-item
+              to="/login"
+            >
+              <v-list-item-content>
+                <v-list-item-title class="text-right">تسجيل الدخول</v-list-item-title>
+              </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>mdi-lock</v-icon>
+
+              </v-list-item-icon>
+            </v-list-item>
+            <v-list-item
+              to="/register"
+            >
+              <v-list-item-content>
+                <v-list-item-title class="text-right">سجل حساب</v-list-item-title>
+              </v-list-item-content>
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+
+          </v-list-item-group>
+        </div>
+
+        <div>
+          <v-list-item
+            to="/tests"
+          >
+            <v-list-item-content>
+              <v-list-item-title class="text-right">الاختبارات</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-icon>
+              <v-icon>mdi-test-tube</v-icon>
+
+            </v-list-item-icon>
+          </v-list-item>
+        </div>
+      </div>
+
+      <div class="sidebar-footer" v-if="this.$auth.loggedIn">
         <v-list-item
           @click="logout"
         >
@@ -71,50 +119,80 @@
         </v-list-item>
       </div>
 
-      <div v-else>
-        <v-list-item-group
-          color="primary"
-        >
-          <v-list-item
-            to="/login"
-          >
-            <v-list-item-content>
-              <v-list-item-title class="text-right">تسجيل الدخول</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-icon>
-              <v-icon>mdi-lock</v-icon>
-
-            </v-list-item-icon>
-          </v-list-item>
-          <v-list-item
-            to="/register"
-          >
-            <v-list-item-content>
-              <v-list-item-title class="text-right">سجل حساب</v-list-item-title>
-            </v-list-item-content>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-
-        </v-list-item-group>
-      </div>
-
-      <div>
-        <v-list-item
-          to="/tests"
-        >
-          <v-list-item-content>
-            <v-list-item-title class="text-right">الاختبارات</v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-icon>
-            <v-icon>mdi-test-tube</v-icon>
-
-          </v-list-item-icon>
-        </v-list-item>
-      </div>
-
     </v-navigation-drawer>
+
+<style scoped>
+::v-deep .sidebar-drawer .v-navigation-drawer__content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+}
+
+.sidebar-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.sidebar-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 0;
+}
+
+.theme--dark .sidebar-footer {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.theme--light .sidebar-footer {
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode switcher - keep LTR in toolbar */
+.dark-mode-switcher {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  margin-right: 8px;
+  direction: ltr !important;
+}
+
+::v-deep .dark-mode-switch {
+  direction: ltr !important;
+  margin: 0;
+  padding: 0;
+}
+
+::v-deep .dark-mode-switch .v-input__control {
+  direction: ltr !important;
+}
+
+::v-deep .dark-mode-switch .v-input__slot {
+  direction: ltr !important;
+  flex-direction: row !important;
+}
+
+::v-deep .dark-mode-switch .v-input--selection-controls__input {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+}
+
+::v-deep .dark-mode-switch .v-input__prepend-outer {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+}
+
+::v-deep .dark-mode-switch .v-input--switch__thumb {
+  left: 0 !important;
+  right: auto !important;
+}
+
+::v-deep .dark-mode-switch.v-input--is-dirty .v-input--switch__thumb {
+  left: 20px !important;
+  right: auto !important;
+}
+</style>
 
     <v-app-bar dark app>
 
@@ -207,14 +285,15 @@
 
 
       </div>
-      <div class="ml-2">
-
-        <v-switch class="mt-5"
-                  @click="changeMode"
-                  inset
-                  persistent-hint
-                  :value="$vuetify.theme.dark"
-                  prepend-icon="mdi-theme-light-dark"
+      <div class="dark-mode-switcher" dir="ltr" style="direction: ltr !important;">
+        <v-switch
+          @change="changeMode"
+          :input-value="$vuetify.theme.dark"
+          class="dark-mode-switch"
+          hide-details
+          dense
+          color="white"
+          prepend-icon="mdi-theme-light-dark"
         ></v-switch>
       </div>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>

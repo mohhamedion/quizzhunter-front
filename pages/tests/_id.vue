@@ -144,7 +144,7 @@
               </v-list-item-content>
 
               <v-list-item-content>
-                <v-list-item-title>{{ item.totalPoints }}/{{ item.session_questions_count }}</v-list-item-title>
+                <v-list-item-title>{{ formatPoints(item.totalPoints) }}/{{ item.session_questions_count }}</v-list-item-title>
               </v-list-item-content>
 
               <v-list-item-content>
@@ -180,7 +180,7 @@
               </v-list-item-content>
 
               <v-list-item-content>
-                <v-list-item-title>{{ item.totalPoints }}/{{ item.session_questions_count }}</v-list-item-title>
+                <v-list-item-title>{{ formatPoints(item.totalPoints) }}/{{ item.session_questions_count }}</v-list-item-title>
               </v-list-item-content>
 
               <v-list-item-content>
@@ -341,6 +341,9 @@ export default {
 
     unshiftComment(comment) {
       this.comments.unshift(comment);
+    },
+    formatPoints(value) {
+      return parseFloat(value).toFixed(1);
     },
     reserve() {
       this.startSession();
