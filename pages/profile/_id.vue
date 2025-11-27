@@ -180,12 +180,12 @@ export default {
   async asyncData({params, $axios}) {
     try {
       const [testSeessionsRes, userRes, testsRes] = await Promise.all([
-        fetch(`${process.env.baseUrl || 'http://localhost:8080'}/api/testSessions/paginate?user_id=${params.id}`)
+        fetch(`${process.env.baseUrl || 'https://apiquizz.smartsupport.pro'}/api/testSessions/paginate?user_id=${params.id}`)
           .then(res => res.json())
           .then(res => res.data || []),
-        fetch(`${process.env.baseUrl || 'http://localhost:8080'}/api/profile/${params.id}`)
+        fetch(`${process.env.baseUrl || 'https://apiquizz.smartsupport.pro'}/api/profile/${params.id}`)
           .then(res => res.json()),
-        fetch(`${process.env.baseUrl || 'http://localhost:8080'}/api/tests?user_id=${params.id}`)
+        fetch(`${process.env.baseUrl || 'https://apiquizz.smartsupport.pro'}/api/tests?user_id=${params.id}`)
           .then(res => res.json())
           .then(res => res.data || [])
       ]);
