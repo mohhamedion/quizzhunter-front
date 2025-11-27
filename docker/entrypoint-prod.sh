@@ -4,7 +4,14 @@ set -e
 # Check if .nuxt directory exists and has content
 if [ ! -d ".nuxt" ] || [ -z "$(ls -A .nuxt 2>/dev/null)" ]; then
   echo "Building Nuxt application for production..."
-  npm run build
+  
+  # Use build script that works with Node 14 (no NODE_OPTIONS flag)
+  if [ -f "/usr/local/bin/build.sh" ]; then
+    /usr/local/bin/build.sh
+  else
+    # Fallback: run nuxt build directly (Node 14 doesn't need openssl-legacy-provider)
+    node node_modules/.bin/nuxt build
+  fi
   
   # Verify build was successful
   if [ ! -d ".nuxt" ] || [ -z "$(ls -A .nuxt 2>/dev/null)" ]; then

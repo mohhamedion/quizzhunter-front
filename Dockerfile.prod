@@ -38,9 +38,10 @@ COPY --from=builder /app/pages ./pages
 COPY --from=builder /app/plugins ./plugins
 COPY --from=builder /app/store ./store
 
-# Copy production entrypoint
+# Copy production entrypoint and build script
 COPY docker/entrypoint-prod.sh /usr/local/bin/entrypoint-prod.sh
-RUN chmod +x /usr/local/bin/entrypoint-prod.sh
+COPY docker/build.sh /usr/local/bin/build.sh
+RUN chmod +x /usr/local/bin/entrypoint-prod.sh /usr/local/bin/build.sh
 
 # Expose port
 EXPOSE 3000
