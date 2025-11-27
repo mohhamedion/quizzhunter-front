@@ -10,8 +10,12 @@ RUN npm ci
 # Copy application files
 COPY . .
 
-# Build the application
-RUN npm run build
+# Copy build script
+COPY docker/build.sh /usr/local/bin/build.sh
+RUN chmod +x /usr/local/bin/build.sh
+
+# Build the application (using script that works with Node 14)
+RUN /usr/local/bin/build.sh
 
 # Production stage
 FROM node:14-alpine
