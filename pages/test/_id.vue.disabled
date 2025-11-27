@@ -1,0 +1,15 @@
+<template>
+  <div></div>
+</template>
+<script>
+export default {
+  middleware({$auth, redirect, params, route}) {
+    // Don't redirect if we're on the add-questions or questions page
+    if (route.path.includes('/add-questions') || route.path.includes('/questions')) {
+      return
+    }
+    // For /test/:id route, redirect to public test page
+    return redirect('/tests/'+params.id)
+  }
+}
+</script>
