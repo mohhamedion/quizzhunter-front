@@ -22,11 +22,12 @@ services:
     environment:
       - NODE_ENV=production
       - HOST=0.0.0.0
-      - PORT=3000
+      - PORT=${PORT:-3000}
       # These URLs are exposed to the browser, so they must be public URLs
+      # Values are read from .env file via env_file, with fallback defaults
       - BACKEND_URL=${BACKEND_URL:-http://localhost:8080}
-      - BASE_URL=${BACKEND_URL:-http://localhost:8080}
-      - API_BASE_URL=${BACKEND_URL:-http://localhost:8080}
+      - BASE_URL=${BASE_URL:-${BACKEND_URL:-http://localhost:8080}}
+      - API_BASE_URL=${API_BASE_URL:-${BACKEND_URL:-http://localhost:8080}}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
     networks:
       - quizzhunter-frontend-network
