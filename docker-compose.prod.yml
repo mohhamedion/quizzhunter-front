@@ -14,8 +14,9 @@ services:
       - ./:/app
       # Prevent node_modules from being overwritten by host
       - /app/node_modules
-      # Note: .nuxt directory will be synced between host and container
-      # This allows you to see the built files on the host machine
+      # Prevent .nuxt from being overwritten by host (keep container's built version)
+      # The built .nuxt directory stays in the container
+      - /app/.nuxt
     env_file:
       - .env
     environment:
