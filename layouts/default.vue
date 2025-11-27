@@ -316,13 +316,13 @@ export default {
 
     },
     unreadNotificationsCount() {
-      this.$axios.get(`${process.env.baseUrl}/api/notifications/count-unread`).then(res => {
+      this.$axios.get('/notifications/count-unread').then(res => {
         this.notificationsCount = res.data;
       });
     },
     getNotifications() {
       this.notificationsLoading = true;
-      this.$axios.get(`${process.env.baseUrl}/api/notifications`).then(res => {
+      this.$axios.get('/notifications').then(res => {
         this.notifications = res.data.data.map(el => {
           return {title: el.data.message, icon: 'mdi-account', link: el.data.link}
         });

@@ -52,7 +52,7 @@ export default{
   },
   methods:{
     editFullName(){
-      this.$axios.patch(`${process.env.baseUrl}/api/user/profile`,{
+      this.$axios.patch('/user/profile',{
         firstname:this.firstname,lastname:this.lastname
       }).then(res=>{
 

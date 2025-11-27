@@ -142,7 +142,6 @@
 
 <script>
 import testCard from "../../components/tests/test-card";
-import axios from 'axios';
 
 export default {
   components: {testCard},
@@ -158,7 +157,7 @@ export default {
   methods: {
     async getTests() {
       try {
-        const response = await axios.get(`${process.env.baseUrl}/api/tests?user_id=${this.$route.params.id}`);
+        const response = await this.$axios.get(`/tests?user_id=${this.$route.params.id}`);
         this.tests = response.data.data || [];
       } catch (error) {
         console.error('Error fetching tests:', error);

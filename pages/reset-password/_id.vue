@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     resetPassword() {
-      this.$axios.post(`${process.env.baseUrl}/api/reset-password`, {
+      this.$axios.post('/reset-password', {
         token: this.$route.params.id,
         email: this.$route.query.email,
         password: this.password,

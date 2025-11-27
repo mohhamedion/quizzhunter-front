@@ -26,7 +26,7 @@ export default {
 
   methods: {
     getUsers() {
-      this.$axios.get(`${process.env.baseUrl}/api/panel/' + 'users`).then(res => {
+      this.$axios.get('/panel/users').then(res => {
         this.rows = res.data.data
       })
     }

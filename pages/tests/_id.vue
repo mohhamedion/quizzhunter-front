@@ -287,7 +287,7 @@ export default {
     );
     
     try {
-      const result = await $axios.get(`${process.env.baseUrl}/api/tests/${params.id}`);
+      const result = await $axios.get(`/tests/${params.id}`);
       // TestResource returns {data: {...}} format
       const test = result.data.data || result.data;
       if (!test) {
@@ -299,7 +299,7 @@ export default {
       
       let sessionExist;
       if ($auth.loggedIn) {
-        sessionExist = (await $axios.get(`${process.env.baseUrl}/api/testSessions/current-session-exist`)).data;
+        sessionExist = (await $axios.get('/testSessions/current-session-exist')).data;
       }
 
       return {test, bestUsers, lastSessions, sessionExist, comments};
@@ -317,7 +317,7 @@ export default {
     },
     createComment() {
       this.$axios
-        .post(`${process.env.baseUrl}/api/comments`, {
+        .post('/comments', {
           test_id: this.test.id,
           comment: this.inputComment,
         })
@@ -328,7 +328,7 @@ export default {
     },
     replyComment(commentId, input, replayComments) {
       this.$axios
-        .post(`${process.env.baseUrl}/api/comments`, {
+        .post('/comments', {
           test_id: this.test.id,
           comment: input,
           comment_id: commentId,
@@ -358,7 +358,7 @@ export default {
       this.loading = true;
 
 
-      this.$axios.post(`${process.env.baseUrl}/api/testSessions`,
+      this.$axios.post('/testSessions',
         {
           test_id: this.$route.params.id
         }).then(res => {

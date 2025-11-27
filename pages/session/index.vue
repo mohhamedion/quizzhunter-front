@@ -60,7 +60,7 @@ export default {
     Answer, CodeField
   },
   async asyncData({$axios}) {
-    const result = await $axios.get(`${process.env.baseUrl}/api/testSessions`);
+    const result = await $axios.get('/testSessions');
     let timeLeftString = result.data.timeString;
     let timeInteger = result.data.timeInteger;
     const session = result.data.session;
@@ -85,7 +85,7 @@ export default {
       if(!this.answers_ids.length){
          return;
       }
-      this.$axios.post(`${process.env.baseUrl}/api/testSessions/answerQuestion`, {
+      this.$axios.post('/testSessions/answerQuestion', {
         answer_ids: this.answers_ids,
         session_question_id: this.questions[this.questionIndex].id
       }).then(res => {

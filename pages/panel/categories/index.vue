@@ -162,7 +162,7 @@ export default {
 
   methods: {
     getCategories() {
-      this.$axios.get(`${process.env.baseUrl}/api/panel/` + 'categories').then(res => {
+      this.$axios.get('/panel/categories').then(res => {
         this.rows = res.data
         console.log(res.data);
       })
@@ -174,7 +174,7 @@ export default {
     },
 
     update(){
-      this.$axios.patch(`${process.env.baseUrl}/api/panel/` + 'categories/' + this.rowToEdit.id,{
+      this.$axios.patch('/panel/categories/' + this.rowToEdit.id,{
         image:this.rowToEdit.image,
         category:this.rowToEdit.category
       }).then(res => {
@@ -182,7 +182,7 @@ export default {
       })
     },
     create(){
-      this.$axios.post(`${process.env.baseUrl}/api/panel/` + 'categories',{
+      this.$axios.post('/panel/categories',{
         image:this.newCategory.image,
         category:this.newCategory.category
       }).then(res => {

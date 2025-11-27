@@ -293,7 +293,7 @@ export default {
   },
   methods: {
     getBestFive() {
-      this.$axios.get(`${process.env.baseUrl}/api/tests/bestfive`).then(res => {
+      this.$axios.get('/tests/bestfive').then(res => {
         this.bestFive = res.data
       })
     }

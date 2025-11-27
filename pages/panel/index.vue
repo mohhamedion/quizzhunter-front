@@ -159,7 +159,7 @@ export default {
 
   methods: {
     getData() {
-      this.$axios.get(`${process.env.baseUrl}/api/panel/`).then(res => {
+      this.$axios.get('/panel/').then(res => {
         this.dashboard = res.data;
         this.dashboard.users.map(el => {
           this.userStatistic.push(el.total);

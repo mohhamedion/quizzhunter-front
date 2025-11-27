@@ -97,7 +97,7 @@ export default {
   },
 
   async asyncData({$axios, params}) {
-    const response = await $axios.get(`${process.env.baseUrl}/api/result/${params.id}`);
+    const response = await $axios.get(`/result/${params.id}`);
     const result = response.data;
 
     const sessionQuestions = result.session_questions;
@@ -119,7 +119,7 @@ export default {
       return parseFloat(value).toFixed(1);
     },
     rate(rate) {
-      this.$axios.post(`${process.env.baseUrl}/api/rate`, {
+      this.$axios.post('/rate', {
         rate: rate,
         test_id: parseInt(this.result.test_id)
       }).then(res=>{

@@ -26,7 +26,7 @@ export default {
 
   methods: {
     getTests() {
-      this.$axios.get(`${process.env.baseUrl}/api/panel/` + 'tests').then(res => {
+      this.$axios.get('/panel/tests').then(res => {
         this.rows = res.data.data
       })
     }

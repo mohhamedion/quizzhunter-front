@@ -115,7 +115,7 @@ export default {
   methods: {
     register() {
       this.loading  = true;
-      this.$axios.post(`${process.env.baseUrl}/api/register`, {
+      this.$axios.post('/register', {
         email: this.email,
         password: this.password,
         c_password: this.c_password,

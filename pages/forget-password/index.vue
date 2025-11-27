@@ -32,7 +32,7 @@ export default{
 
   methods:{
     resetPassword(){
-      this.$axios.post(`${process.env.baseUrl}/api/forgot-password`,{email:this.email}).then(res=>{
+      this.$axios.post('/forgot-password',{email:this.email}).then(res=>{
       console.log(res.data);
       });
     }

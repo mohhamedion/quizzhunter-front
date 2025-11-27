@@ -100,9 +100,9 @@ export default {
         },
 
         endpoints: {
-          login: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/login', method: 'post'},
-          logout: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/logout', method: 'post'},
-          user: {url: (process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro') + '/api/user', method: 'get'}
+          login: {url: '/login', method: 'post'},
+          logout: {url: '/logout', method: 'post'},
+          user: {url: '/user', method: 'get'}
         }
       }
     }
