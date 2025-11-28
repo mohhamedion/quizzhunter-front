@@ -1,5 +1,17 @@
 import colors from 'vuetify/es5/util/colors'
 
+// Load environment variables from .env file
+// This must be done BEFORE the export default so env vars are available
+const dotenv = require('dotenv')
+const result = dotenv.config()
+if (result.error) {
+  console.warn('Warning: Could not load .env file:', result.error.message)
+} else {
+  console.log('✓ Loaded .env file')
+}
+
+// Debug: Log environment variables
+
 export default {
    // serverMiddleware: ["redirect-ssl"],
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -110,7 +122,11 @@ export default {
 
 
   env: {
-    baseUrl: process.env.BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro'
+    baseUrl: process.env.BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro',
+    apiBaseUrl: process.env.API_BASE_URL || process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro',
+    backendUrl: process.env.BACKEND_URL || 'https://apiquizz.smartsupport.pro',
+    frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+    nodeEnv: process.env.NODE_ENV || 'development'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

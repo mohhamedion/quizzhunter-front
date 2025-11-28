@@ -19,15 +19,15 @@ services:
     env_file:
       - .env
     environment:
-      - NODE_ENV=development
-      - HOST=0.0.0.0
-      - PORT=3000
+      - NODE_ENV=${NODE_ENV:-development}
+      - HOST=${HOST:-0.0.0.0}
+      - PORT=${PORT:-3000}
       # These URLs are exposed to the browser, so they must be public URLs
-      # The browser cannot access Docker internal URLs like host.docker.internal
-      - BACKEND_URL=${BACKEND_URL:-http://localhost:8080}
-      - BASE_URL=${BACKEND_URL:-http://localhost:8080}
-      - API_BASE_URL=${BACKEND_URL:-http://localhost:8080}
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:3000}
+      # Values are read from .env file via env_file, with fallback defaults
+      - BACKEND_URL=${BACKEND_URL:-https://apiquizz.smartsupport.pro}
+      - BASE_URL=${BASE_URL:-${BACKEND_URL:-https://apiquizz.smartsupport.pro}}
+      - API_BASE_URL=${API_BASE_URL:-${BACKEND_URL:-https://apiquizz.smartsupport.pro}}
+      - FRONTEND_URL=${FRONTEND_URL:-https://quizzhunter.smartsupport.pro}
       # Note: NODE_OPTIONS cannot contain --openssl-legacy-provider in Docker
       # This is handled via a wrapper script in the Dockerfile
     networks:
